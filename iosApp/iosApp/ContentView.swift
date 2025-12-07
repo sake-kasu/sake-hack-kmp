@@ -16,7 +16,7 @@ struct ContentView: View {
                     Image(systemName: "swift")
                         .font(.system(size: 200))
                         .foregroundColor(.accentColor)
-                    Text("SwiftUI: \(GreetingViewModel().greet())")
+                    Text("SwiftUI: Hello, \(GetPlatformInfoUseCase().invoke())!")
                 }
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
