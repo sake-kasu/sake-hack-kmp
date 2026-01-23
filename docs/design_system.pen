@@ -1,0 +1,3331 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "zdRIa",
+      "x": -10005,
+      "y": -13180,
+      "name": "Digital Agency Design System",
+      "width": 1414,
+      "fill": "$white",
+      "layout": "vertical",
+      "gap": 64,
+      "padding": 48,
+      "children": [
+        {
+          "type": "text",
+          "id": "Sjb9a",
+          "name": "DS Title",
+          "fill": "$text-body",
+          "content": "Digital Agency Design System",
+          "lineHeight": 1.4,
+          "fontFamily": "Noto Sans JP",
+          "fontSize": 32,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "7lr9o",
+          "name": "DS Subtitle",
+          "fill": "$text-description",
+          "content": "デジタル庁デザインシステム v2.10 準拠",
+          "lineHeight": 1.6,
+          "fontFamily": "Noto Sans JP",
+          "fontSize": 16
+        },
+        {
+          "type": "frame",
+          "id": "BjClW",
+          "name": "Buttons Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "zcKrm",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Button - ボタン",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "jEBfp",
+              "name": "Button/Primary/Large",
+              "reusable": true,
+              "height": 56,
+              "fill": "$button-normal",
+              "cornerRadius": 8,
+              "padding": [
+                16,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GHz0J",
+                  "name": "Label",
+                  "fill": "$text-on-fill",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5wx2v",
+              "name": "Button/Primary/Medium",
+              "reusable": true,
+              "height": 48,
+              "fill": "$button-normal",
+              "cornerRadius": 8,
+              "padding": [
+                12,
+                20
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CsxGb",
+                  "name": "Label",
+                  "fill": "$text-on-fill",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "c8bQ1",
+              "name": "Button/Primary/Small",
+              "reusable": true,
+              "height": 36,
+              "fill": "$button-normal",
+              "cornerRadius": 4,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hfxgh",
+                  "name": "Label",
+                  "fill": "$text-on-fill",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o10gt",
+              "name": "Button/Primary/XSmall",
+              "reusable": true,
+              "height": 28,
+              "fill": "$button-normal",
+              "cornerRadius": 4,
+              "padding": [
+                4,
+                12
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lQdNm",
+                  "name": "Label",
+                  "fill": "$text-on-fill",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MZb5D",
+              "name": "Button/Secondary/Large",
+              "reusable": true,
+              "height": 56,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$button-normal"
+              },
+              "padding": [
+                16,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fpQjr",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AOmNz",
+              "name": "Button/Secondary/Medium",
+              "reusable": true,
+              "height": 48,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$button-normal"
+              },
+              "padding": [
+                12,
+                20
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Vp3BY",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mV3sU",
+              "name": "Button/Secondary/Small",
+              "reusable": true,
+              "height": 36,
+              "fill": "$white",
+              "cornerRadius": 4,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$button-normal"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a3mHL",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "B7lJi",
+              "name": "Button/Secondary/XSmall",
+              "reusable": true,
+              "height": 28,
+              "fill": "$white",
+              "cornerRadius": 4,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$button-normal"
+              },
+              "padding": [
+                4,
+                12
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SI6kH",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qdT9f",
+              "name": "Button/Tertiary/Large",
+              "reusable": true,
+              "height": 56,
+              "fill": "transparent",
+              "padding": [
+                16,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sy9n7",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X9MAb",
+              "name": "Button/Tertiary/Medium",
+              "reusable": true,
+              "height": 48,
+              "fill": "transparent",
+              "padding": [
+                12,
+                20
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tTpkE",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NjI0Q",
+              "name": "Button/Tertiary/Small",
+              "reusable": true,
+              "height": 36,
+              "fill": "transparent",
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "T42UE",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Xv4Yp",
+              "name": "Button/Tertiary/XSmall",
+              "reusable": true,
+              "height": 28,
+              "fill": "transparent",
+              "padding": [
+                4,
+                12
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "h4bBM",
+                  "name": "Label",
+                  "fill": "$button-normal",
+                  "content": "ボタン",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PGw8Y",
+          "name": "Input Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "30vy2",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Input Text - インプットテキスト",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "jOiqV",
+              "name": "Input/Text/Default",
+              "reusable": true,
+              "width": 320,
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5w98j",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "ラベル",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "VQIqT",
+                  "name": "InputBox",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-field"
+                  },
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3M6yF",
+                      "name": "Placeholder",
+                      "fill": "$text-placeholder",
+                      "content": "プレースホルダー",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "48kh1",
+                  "name": "HelperText",
+                  "fill": "$text-description",
+                  "content": "補足テキスト",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JjKOx",
+              "name": "Input/Text/Error",
+              "reusable": true,
+              "width": 320,
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IIf4i",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "ラベル",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "MnWzN",
+                  "name": "InputBox",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$border-alert"
+                  },
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JQt51",
+                      "name": "Placeholder",
+                      "fill": "$text-body",
+                      "content": "入力値",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "DOOy6",
+                  "name": "ErrorText",
+                  "fill": "$text-alert",
+                  "content": "エラーメッセージ",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "C3yWq",
+              "name": "Input/Textarea/Default",
+              "reusable": true,
+              "width": 320,
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QbKv2",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "ラベル",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "gnZyR",
+                  "name": "TextareaBox",
+                  "width": "fill_container",
+                  "height": 120,
+                  "fill": "$white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-field"
+                  },
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VbECX",
+                      "name": "Placeholder",
+                      "fill": "$text-placeholder",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "プレースホルダー",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "e3vRI",
+                  "name": "HelperText",
+                  "fill": "$text-description",
+                  "content": "補足テキスト",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ffTWJ",
+          "name": "Checkbox Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "F55me",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Checkbox / Radio - チェックボックス / ラジオボタン",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "x8XEa",
+              "name": "Checkbox/Unchecked",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QSAgq",
+                  "name": "Box",
+                  "width": 24,
+                  "height": 24,
+                  "fill": "$white",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$border-field"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "AtxNf",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "選択肢",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "05Zde",
+              "name": "Checkbox/Checked",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "odtzq",
+                  "name": "Box",
+                  "width": 24,
+                  "height": 24,
+                  "fill": "$button-normal",
+                  "cornerRadius": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "SHKZf",
+                      "name": "CheckIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "check",
+                      "iconFontFamily": "lucide",
+                      "fill": "$white"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "aGsTh",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "選択肢",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "7ueei",
+              "name": "Radio/Unchecked",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "iLk2n",
+                  "name": "Circle",
+                  "fill": "$white",
+                  "width": 24,
+                  "height": 24,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$border-field"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "MDZrO",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "選択肢",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "s70ZT",
+              "name": "Radio/Checked",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "SXPJy",
+                  "name": "CircleOuter",
+                  "width": 24,
+                  "height": 24,
+                  "fill": "$white",
+                  "cornerRadius": 9999,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$button-normal"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "3ciWf",
+                      "name": "CircleInner",
+                      "fill": "$button-normal",
+                      "width": 12,
+                      "height": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "QzuOa",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "選択肢",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UxirL",
+          "name": "Select Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "UlaSj",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Select Box - セレクトボックス",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "efiXP",
+              "name": "Select/Default",
+              "reusable": true,
+              "width": 320,
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hUaVm",
+                  "name": "Label",
+                  "fill": "$text-body",
+                  "content": "ラベル",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "loEuP",
+                  "name": "SelectBox",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-field"
+                  },
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ajmxL",
+                      "name": "Value",
+                      "fill": "$text-placeholder",
+                      "content": "選択してください",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "zgJqa",
+                      "name": "ChevronIcon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-body"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Rx177",
+                  "name": "HelperText",
+                  "fill": "$text-description",
+                  "content": "補足テキスト",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "aauJE",
+          "name": "Card Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "ejCWA",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Card - カード",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "wZxSm",
+              "name": "Card/Default",
+              "reusable": true,
+              "width": 320,
+              "fill": "$white",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000001A",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QLZp0",
+                  "name": "ImageSlot",
+                  "slot": [],
+                  "width": "fill_container",
+                  "height": 180,
+                  "fill": "$sumi-200",
+                  "cornerRadius": [
+                    12,
+                    12,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fsERa",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pK0N3",
+                      "name": "Heading",
+                      "fill": "$text-body",
+                      "content": "カードタイトル",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "7Dp99",
+                      "name": "Description",
+                      "fill": "$text-description",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "カードの説明テキストが入ります。複数行にわたる場合もあります。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XwNyS",
+          "name": "Accordion Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "xqelJ",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Accordion - アコーディオン",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "xfjtt",
+              "name": "Accordion/Closed",
+              "reusable": true,
+              "width": 480,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BgRlK",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "padding": 16,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eYqqr",
+                      "name": "Title",
+                      "fill": "$text-body",
+                      "content": "アコーディオンタイトル",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "M5Svb",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-body"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "okl3T",
+              "name": "Accordion/Open",
+              "reusable": true,
+              "width": 480,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qm6Vt",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "padding": 16,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Drb1x",
+                      "name": "Title",
+                      "fill": "$text-body",
+                      "content": "アコーディオンタイトル",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "XX7rU",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "chevron-up",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-body"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Xzilr",
+                  "name": "ContentSlot",
+                  "slot": [],
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    0,
+                    16,
+                    16,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JILtx",
+                      "name": "Content",
+                      "fill": "$text-body",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "アコーディオンの内容が入ります。展開時にこの領域が表示されます。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UwS1B",
+          "name": "Modal Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "HuOZz",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Modal Dialog - モーダルダイアログ",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "rqVws",
+              "name": "Modal/Default",
+              "reusable": true,
+              "width": 480,
+              "fill": "$white",
+              "cornerRadius": 12,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000003D",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 24
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mOZyP",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-divider"
+                  },
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lr2T3",
+                      "name": "Title",
+                      "fill": "$text-body",
+                      "content": "モーダルタイトル",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Q698X",
+                      "name": "CloseButton",
+                      "width": 32,
+                      "height": 32,
+                      "cornerRadius": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "b6owN",
+                          "name": "Icon",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-body"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JgHnz",
+                  "name": "BodySlot",
+                  "slot": [],
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vOuSu",
+                      "name": "Content",
+                      "fill": "$text-body",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "モーダルのコンテンツが入ります。確認メッセージやフォームなどを配置できます。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mfwl2",
+                  "name": "Footer",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "$border-divider"
+                  },
+                  "gap": 12,
+                  "padding": [
+                    16,
+                    24
+                  ],
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "SYcW7",
+                      "type": "ref",
+                      "ref": "AOmNz",
+                      "name": "modalCancelBtn",
+                      "descendants": {
+                        "Vp3BY": {
+                          "content": "キャンセル"
+                        }
+                      }
+                    },
+                    {
+                      "id": "wEuXh",
+                      "type": "ref",
+                      "ref": "5wx2v",
+                      "name": "modalConfirmBtn",
+                      "descendants": {
+                        "CsxGb": {
+                          "content": "確認する"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uzSoI",
+          "name": "Navigation Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "tcqCz",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Navigation - ナビゲーション",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "brfJV",
+              "name": "Breadcrumb/Default",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gP1Dq",
+                  "name": "Item1",
+                  "fill": "$text-link",
+                  "content": "ホーム",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14
+                },
+                {
+                  "type": "icon_font",
+                  "id": "sLGmp",
+                  "name": "Sep1",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-description"
+                },
+                {
+                  "type": "text",
+                  "id": "hPZUy",
+                  "name": "Item2",
+                  "fill": "$text-link",
+                  "content": "カテゴリ",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14
+                },
+                {
+                  "type": "icon_font",
+                  "id": "ILfQK",
+                  "name": "Sep2",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-description"
+                },
+                {
+                  "type": "text",
+                  "id": "qAEh0",
+                  "name": "Current",
+                  "fill": "$text-body",
+                  "content": "現在のページ",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iSDqr",
+              "name": "Pagination/Default",
+              "reusable": true,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qtRBZ",
+                  "name": "PrevButton",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$white",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "mli0V",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-body"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ToURg",
+                  "name": "Page1",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$button-normal",
+                  "cornerRadius": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n8Pox",
+                      "name": "Text",
+                      "fill": "$white",
+                      "content": "1",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mC7NO",
+                  "name": "Page2",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$white",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kNoUd",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "content": "2",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jja0Z",
+                  "name": "Page3",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$white",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1haQx",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "content": "3",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jVAqg",
+                  "name": "NextButton",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$white",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "dkfqx",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-body"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "P1dLA",
+              "name": "StepNavigation/Default",
+              "reusable": true,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EpQO5",
+                  "name": "Step1",
+                  "fill": "$button-normal",
+                  "cornerRadius": [
+                    4,
+                    0,
+                    0,
+                    4
+                  ],
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "I35NE",
+                      "name": "Number",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "$white",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xMN68",
+                          "name": "Text",
+                          "fill": "$button-normal",
+                          "content": "1",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "q3Pqw",
+                      "name": "Label",
+                      "fill": "$white",
+                      "content": "入力",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4C3kI",
+                  "name": "Step2",
+                  "fill": "$sumi-100",
+                  "stroke": {
+                    "thickness": {
+                      "top": 1,
+                      "bottom": 1
+                    },
+                    "fill": "$border-default"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MVzIA",
+                      "name": "Number",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "$sumi-400",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rGv6t",
+                          "name": "Text",
+                          "fill": "$white",
+                          "content": "2",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "wYEG6",
+                      "name": "Label",
+                      "fill": "$text-description",
+                      "content": "確認",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MDfoF",
+                  "name": "Step3",
+                  "fill": "$sumi-100",
+                  "cornerRadius": [
+                    0,
+                    4,
+                    4,
+                    0
+                  ],
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fuVjc",
+                      "name": "Number",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "$sumi-400",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XH4nH",
+                          "name": "Text",
+                          "fill": "$white",
+                          "content": "3",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "LYtnT",
+                      "name": "Label",
+                      "fill": "$text-description",
+                      "content": "完了",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4Klgn",
+          "name": "Feedback Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "CxPh6",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Feedback - フィードバック / バナー",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "bwRsO",
+              "name": "Alert/Success",
+              "reusable": true,
+              "width": 480,
+              "fill": "$forest-50",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$forest-600"
+              },
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "8K56Y",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "check-circle",
+                  "iconFontFamily": "lucide",
+                  "fill": "$forest-700"
+                },
+                {
+                  "type": "frame",
+                  "id": "cZYSP",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "f1c7a",
+                      "name": "Title",
+                      "fill": "$forest-900",
+                      "content": "成功しました",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Lvj3a",
+                      "name": "Description",
+                      "fill": "$forest-800",
+                      "content": "操作が正常に完了しました。",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XKPOL",
+              "name": "Alert/Error",
+              "reusable": true,
+              "width": 480,
+              "fill": "$sun-50",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$sun-800"
+              },
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "FS6I3",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "alert-circle",
+                  "iconFontFamily": "lucide",
+                  "fill": "$sun-800"
+                },
+                {
+                  "type": "frame",
+                  "id": "dEaND",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5zkgo",
+                      "name": "Title",
+                      "fill": "$sun-900",
+                      "content": "エラーが発生しました",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wCXF9",
+                      "name": "Description",
+                      "fill": "$sun-800",
+                      "content": "入力内容を確認してください。",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "B02Nb",
+              "name": "Alert/Warning",
+              "reusable": true,
+              "width": 480,
+              "fill": "$wood-50",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$wood-600"
+              },
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sNnY3",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "alert-triangle",
+                  "iconFontFamily": "lucide",
+                  "fill": "$wood-700"
+                },
+                {
+                  "type": "frame",
+                  "id": "2l4Vo",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cvPHv",
+                      "name": "Title",
+                      "fill": "$wood-900",
+                      "content": "注意が必要です",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "dhNRP",
+                      "name": "Description",
+                      "fill": "$wood-800",
+                      "content": "この操作は取り消せません。",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "POr1n",
+              "name": "Alert/Info",
+              "reusable": true,
+              "width": 480,
+              "fill": "$sea-50",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$sea-700"
+              },
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "DHXUk",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "info",
+                  "iconFontFamily": "lucide",
+                  "fill": "$sea-700"
+                },
+                {
+                  "type": "frame",
+                  "id": "JWlGb",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "y8LIs",
+                      "name": "Title",
+                      "fill": "$sea-900",
+                      "content": "お知らせ",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hxAQY",
+                      "name": "Description",
+                      "fill": "$sea-800",
+                      "content": "新しい機能が追加されました。",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pScc0",
+          "name": "Table Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "xgEhA",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Table - テーブル",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "CVOpB",
+              "name": "Table/Default",
+              "reusable": true,
+              "width": 600,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "3UT5M",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$sumi-50",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-default"
+                  },
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fpJIF",
+                      "name": "TH1",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "C2C55",
+                          "name": "Text",
+                          "fill": "$text-body",
+                          "content": "名前",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "u48cT",
+                      "name": "TH2",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9YON4",
+                          "name": "Text",
+                          "fill": "$text-body",
+                          "content": "メールアドレス",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hnSHf",
+                      "name": "TH3",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PalYw",
+                          "name": "Text",
+                          "fill": "$text-body",
+                          "content": "ステータス",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3P9Lc",
+                  "name": "Row1",
+                  "width": "fill_container",
+                  "height": 48,
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-divider"
+                  },
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "9laqU",
+                      "name": "TD1",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "q0tsK",
+                          "name": "Text",
+                          "fill": "$text-body",
+                          "content": "山田太郎",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7yKcW",
+                      "name": "TD2",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RYiqj",
+                          "name": "Text",
+                          "fill": "$text-body",
+                          "content": "yamada@example.com",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "4lIOx",
+                      "name": "TD3",
+                      "width": 200,
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Ppusl",
+                          "name": "Text",
+                          "fill": "$forest-700",
+                          "content": "有効",
+                          "lineHeight": 1,
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 14
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cUnQ7",
+          "name": "Chip Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "sLABd",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Chip / Tag - チップ / タグ",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "M2v9p",
+              "name": "ChipRow",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XiMkk",
+                  "name": "Chip/Default",
+                  "reusable": true,
+                  "fill": "$sumi-100",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7n6YQ",
+                      "name": "Label",
+                      "fill": "$text-body",
+                      "content": "タグ",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BVltE",
+                  "name": "Chip/Primary",
+                  "reusable": true,
+                  "fill": "$sea-100",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Duj03",
+                      "name": "Label",
+                      "fill": "$sea-800",
+                      "content": "新着",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AQ82F",
+                  "name": "Chip/Success",
+                  "reusable": true,
+                  "fill": "$forest-100",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8fT8S",
+                      "name": "Label",
+                      "fill": "$forest-800",
+                      "content": "完了",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "1uePk",
+                  "name": "Chip/Warning",
+                  "reusable": true,
+                  "fill": "$wood-100",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "x9QQV",
+                      "name": "Label",
+                      "fill": "$wood-800",
+                      "content": "保留",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hhGSf",
+                  "name": "Chip/Error",
+                  "reusable": true,
+                  "fill": "$sun-100",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8Ne1H",
+                      "name": "Label",
+                      "fill": "$sun-800",
+                      "content": "エラー",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CIir8",
+          "name": "Progress Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "1VXX7",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Progress - プログレスインジケーター",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "MY5Eq",
+              "name": "Progress/Bar",
+              "reusable": true,
+              "width": 320,
+              "height": 8,
+              "fill": "$sumi-200",
+              "cornerRadius": 4,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8QaMp",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Fill",
+                  "width": 192,
+                  "height": 8,
+                  "fill": "$button-normal",
+                  "cornerRadius": 4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wdssi",
+              "name": "Progress/BarWithLabel",
+              "reusable": true,
+              "width": 320,
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NglWu",
+                  "name": "LabelRow",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "snW9Z",
+                      "name": "Label",
+                      "fill": "$text-body",
+                      "content": "アップロード中...",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "9Crys",
+                      "name": "Percent",
+                      "fill": "$text-body",
+                      "content": "60%",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tGXBV",
+                  "name": "Bar",
+                  "width": "fill_container",
+                  "height": 8,
+                  "fill": "$sumi-200",
+                  "cornerRadius": 4,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TqPzx",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Fill",
+                      "width": 192,
+                      "height": 8,
+                      "fill": "$button-normal",
+                      "cornerRadius": 4
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qdRHN",
+          "name": "Divider Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "mDeR6",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Divider - ディバイダー",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "IF9yO",
+              "name": "Divider/Horizontal",
+              "reusable": true,
+              "width": 480,
+              "height": 1,
+              "fill": "$border-divider"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mkTux",
+          "name": "Search Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "IKpGy",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Search Box - 検索ボックス",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "QumLL",
+              "name": "SearchBox/Default",
+              "reusable": true,
+              "width": 320,
+              "height": 48,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-field"
+              },
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "CIwW1",
+                  "name": "Icon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-placeholder"
+                },
+                {
+                  "type": "text",
+                  "id": "EjcnC",
+                  "name": "Placeholder",
+                  "fill": "$text-placeholder",
+                  "content": "検索",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 16
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TMity",
+          "name": "Header Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "Clq1Q",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Header - ヘッダー",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "Kmij7",
+              "name": "Header/Default",
+              "reusable": true,
+              "width": 1200,
+              "height": 64,
+              "fill": "$white",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-divider"
+              },
+              "padding": [
+                0,
+                24
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "clAzs",
+                  "name": "Logo",
+                  "fill": "$text-body",
+                  "content": "サービス名",
+                  "lineHeight": 1,
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "VkjwK",
+                  "name": "Nav",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "leqei",
+                      "name": "NavItem1",
+                      "fill": "$text-body",
+                      "content": "ホーム",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "y6IPW",
+                      "name": "NavItem2",
+                      "fill": "$text-body",
+                      "content": "サービス",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "0V4jm",
+                      "name": "NavItem3",
+                      "fill": "$text-body",
+                      "content": "お問い合わせ",
+                      "lineHeight": 1,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "owOuY",
+          "name": "List Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "SeaWY",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "List - リスト",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "Hu0xS",
+              "name": "List/Default",
+              "reusable": true,
+              "width": 320,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fSOkj",
+                  "name": "ListItem1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-divider"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vAFUH",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "content": "リスト項目 1",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JAaXj",
+                  "name": "ListItem2",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-divider"
+                  },
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6D7tg",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "content": "リスト項目 2",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Vzat7",
+                  "name": "ListItem3",
+                  "width": "fill_container",
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bMDLP",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "content": "リスト項目 3",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Dwbt2",
+          "name": "Quote Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "text",
+              "id": "m5DgG",
+              "name": "Section Title",
+              "fill": "$text-body",
+              "content": "Blockquote - 引用ブロック",
+              "lineHeight": 1.4,
+              "fontFamily": "Noto Sans JP",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "YR0RG",
+              "name": "Blockquote/Default",
+              "reusable": true,
+              "width": 480,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VDlZQ",
+                  "name": "Border",
+                  "width": 4,
+                  "height": "fill_container",
+                  "fill": "$sea-600"
+                },
+                {
+                  "type": "frame",
+                  "id": "89eTG",
+                  "name": "Content",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AacCG",
+                      "name": "Text",
+                      "fill": "$text-body",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "引用テキストが入ります。外部のソースからの情報やコメントを強調する場合に使用します。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "KUaTo",
+                      "name": "Source",
+                      "fill": "$text-description",
+                      "content": "— 引用元",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Noto Sans JP",
+                      "fontSize": 12
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-disabled": {
+      "type": "color",
+      "value": "#E8E8EB"
+    },
+    "bg-primary": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "bg-secondary": {
+      "type": "color",
+      "value": "#F8F8FB"
+    },
+    "bg-tertiary": {
+      "type": "color",
+      "value": "#F1F1F4"
+    },
+    "black": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "border-alert": {
+      "type": "color",
+      "value": "#EC0000"
+    },
+    "border-default": {
+      "type": "color",
+      "value": "#D8D8DB"
+    },
+    "border-disabled": {
+      "type": "color",
+      "value": "#B4B4B7"
+    },
+    "border-divider": {
+      "type": "color",
+      "value": "#D8D8DB"
+    },
+    "border-field": {
+      "type": "color",
+      "value": "#1A1A1C"
+    },
+    "border-focused": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "border-selected": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "button-active": {
+      "type": "color",
+      "value": "#000082"
+    },
+    "button-disabled": {
+      "type": "color",
+      "value": "#B4B4B7"
+    },
+    "button-hover": {
+      "type": "color",
+      "value": "#000082"
+    },
+    "button-normal": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "error": {
+      "type": "color",
+      "value": "#EC0000"
+    },
+    "font-size-2xl": {
+      "type": "number",
+      "value": 20
+    },
+    "font-size-3xl": {
+      "type": "number",
+      "value": 24
+    },
+    "font-size-4xl": {
+      "type": "number",
+      "value": 28
+    },
+    "font-size-5xl": {
+      "type": "number",
+      "value": 32
+    },
+    "font-size-6xl": {
+      "type": "number",
+      "value": 36
+    },
+    "font-size-7xl": {
+      "type": "number",
+      "value": 45
+    },
+    "font-size-8xl": {
+      "type": "number",
+      "value": 57
+    },
+    "font-size-9xl": {
+      "type": "number",
+      "value": 64
+    },
+    "font-size-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "font-size-md": {
+      "type": "number",
+      "value": 14
+    },
+    "font-size-sm": {
+      "type": "number",
+      "value": 12
+    },
+    "font-size-xl": {
+      "type": "number",
+      "value": 18
+    },
+    "font-size-xs": {
+      "type": "number",
+      "value": 11
+    },
+    "forest-100": {
+      "type": "color",
+      "value": "#C2E5D1"
+    },
+    "forest-1000": {
+      "type": "color",
+      "value": "#0D4A2C"
+    },
+    "forest-1100": {
+      "type": "color",
+      "value": "#083A22"
+    },
+    "forest-1200": {
+      "type": "color",
+      "value": "#032213"
+    },
+    "forest-200": {
+      "type": "color",
+      "value": "#9BD4B5"
+    },
+    "forest-300": {
+      "type": "color",
+      "value": "#71C598"
+    },
+    "forest-400": {
+      "type": "color",
+      "value": "#51B883"
+    },
+    "forest-50": {
+      "type": "color",
+      "value": "#E6F5EC"
+    },
+    "forest-500": {
+      "type": "color",
+      "value": "#2CAC6E"
+    },
+    "forest-600": {
+      "type": "color",
+      "value": "#259D63"
+    },
+    "forest-700": {
+      "type": "color",
+      "value": "#1D8B56"
+    },
+    "forest-800": {
+      "type": "color",
+      "value": "#197A4B"
+    },
+    "forest-900": {
+      "type": "color",
+      "value": "#115A36"
+    },
+    "info": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "line-height-100": {
+      "type": "number",
+      "value": 1
+    },
+    "line-height-120": {
+      "type": "number",
+      "value": 1.2
+    },
+    "line-height-130": {
+      "type": "number",
+      "value": 1.3
+    },
+    "line-height-140": {
+      "type": "number",
+      "value": 1.4
+    },
+    "line-height-150": {
+      "type": "number",
+      "value": 1.5
+    },
+    "line-height-160": {
+      "type": "number",
+      "value": 1.6
+    },
+    "line-height-170": {
+      "type": "number",
+      "value": 1.7
+    },
+    "line-height-175": {
+      "type": "number",
+      "value": 1.75
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 12
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-none": {
+      "type": "number",
+      "value": 0
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 4
+    },
+    "sea-100": {
+      "type": "color",
+      "value": "#C5D7FB"
+    },
+    "sea-1000": {
+      "type": "color",
+      "value": "#000071"
+    },
+    "sea-1100": {
+      "type": "color",
+      "value": "#000060"
+    },
+    "sea-1200": {
+      "type": "color",
+      "value": "#00004F"
+    },
+    "sea-200": {
+      "type": "color",
+      "value": "#9DB7F9"
+    },
+    "sea-300": {
+      "type": "color",
+      "value": "#7096F8"
+    },
+    "sea-400": {
+      "type": "color",
+      "value": "#4979F5"
+    },
+    "sea-50": {
+      "type": "color",
+      "value": "#E8F1FE"
+    },
+    "sea-500": {
+      "type": "color",
+      "value": "#264AF4"
+    },
+    "sea-600": {
+      "type": "color",
+      "value": "#1A3EE8"
+    },
+    "sea-700": {
+      "type": "color",
+      "value": "#0031DB"
+    },
+    "sea-800": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "sea-900": {
+      "type": "color",
+      "value": "#000082"
+    },
+    "spacing-12": {
+      "type": "number",
+      "value": 12
+    },
+    "spacing-16": {
+      "type": "number",
+      "value": 16
+    },
+    "spacing-2": {
+      "type": "number",
+      "value": 2
+    },
+    "spacing-20": {
+      "type": "number",
+      "value": 20
+    },
+    "spacing-24": {
+      "type": "number",
+      "value": 24
+    },
+    "spacing-32": {
+      "type": "number",
+      "value": 32
+    },
+    "spacing-4": {
+      "type": "number",
+      "value": 4
+    },
+    "spacing-40": {
+      "type": "number",
+      "value": 40
+    },
+    "spacing-48": {
+      "type": "number",
+      "value": 48
+    },
+    "spacing-56": {
+      "type": "number",
+      "value": 56
+    },
+    "spacing-64": {
+      "type": "number",
+      "value": 64
+    },
+    "spacing-8": {
+      "type": "number",
+      "value": 8
+    },
+    "success": {
+      "type": "color",
+      "value": "#259D63"
+    },
+    "sumi-100": {
+      "type": "color",
+      "value": "#F1F1F4"
+    },
+    "sumi-1000": {
+      "type": "color",
+      "value": "#111111"
+    },
+    "sumi-1100": {
+      "type": "color",
+      "value": "#080808"
+    },
+    "sumi-1200": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "sumi-200": {
+      "type": "color",
+      "value": "#E8E8EB"
+    },
+    "sumi-300": {
+      "type": "color",
+      "value": "#D8D8DB"
+    },
+    "sumi-400": {
+      "type": "color",
+      "value": "#B4B4B7"
+    },
+    "sumi-50": {
+      "type": "color",
+      "value": "#F8F8FB"
+    },
+    "sumi-500": {
+      "type": "color",
+      "value": "#949497"
+    },
+    "sumi-600": {
+      "type": "color",
+      "value": "#757578"
+    },
+    "sumi-700": {
+      "type": "color",
+      "value": "#626264"
+    },
+    "sumi-800": {
+      "type": "color",
+      "value": "#414143"
+    },
+    "sumi-900": {
+      "type": "color",
+      "value": "#1A1A1C"
+    },
+    "sun-100": {
+      "type": "color",
+      "value": "#FFC8B8"
+    },
+    "sun-1000": {
+      "type": "color",
+      "value": "#B80000"
+    },
+    "sun-1100": {
+      "type": "color",
+      "value": "#900000"
+    },
+    "sun-1200": {
+      "type": "color",
+      "value": "#640101"
+    },
+    "sun-200": {
+      "type": "color",
+      "value": "#FFA28B"
+    },
+    "sun-300": {
+      "type": "color",
+      "value": "#FF7B5C"
+    },
+    "sun-400": {
+      "type": "color",
+      "value": "#FF5838"
+    },
+    "sun-50": {
+      "type": "color",
+      "value": "#FFE7E6"
+    },
+    "sun-500": {
+      "type": "color",
+      "value": "#FF4B36"
+    },
+    "sun-600": {
+      "type": "color",
+      "value": "#FF220D"
+    },
+    "sun-700": {
+      "type": "color",
+      "value": "#FA1606"
+    },
+    "sun-800": {
+      "type": "color",
+      "value": "#EC0000"
+    },
+    "sun-900": {
+      "type": "color",
+      "value": "#D50000"
+    },
+    "text-alert": {
+      "type": "color",
+      "value": "#EC0000"
+    },
+    "text-body": {
+      "type": "color",
+      "value": "#1A1A1C"
+    },
+    "text-description": {
+      "type": "color",
+      "value": "#626264"
+    },
+    "text-disabled": {
+      "type": "color",
+      "value": "#B4B4B7"
+    },
+    "text-link": {
+      "type": "color",
+      "value": "#0017C1"
+    },
+    "text-link-hover": {
+      "type": "color",
+      "value": "#000082"
+    },
+    "text-link-visited": {
+      "type": "color",
+      "value": "#000082"
+    },
+    "text-on-fill": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "text-placeholder": {
+      "type": "color",
+      "value": "#757578"
+    },
+    "warning": {
+      "type": "color",
+      "value": "#C16800"
+    },
+    "white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "wood-100": {
+      "type": "color",
+      "value": "#EBDFC2"
+    },
+    "wood-1000": {
+      "type": "color",
+      "value": "#5D3200"
+    },
+    "wood-1100": {
+      "type": "color",
+      "value": "#442500"
+    },
+    "wood-1200": {
+      "type": "color",
+      "value": "#662E00"
+    },
+    "wood-200": {
+      "type": "color",
+      "value": "#DDCCA0"
+    },
+    "wood-300": {
+      "type": "color",
+      "value": "#CFB87C"
+    },
+    "wood-400": {
+      "type": "color",
+      "value": "#C4A860"
+    },
+    "wood-50": {
+      "type": "color",
+      "value": "#F8F1E0"
+    },
+    "wood-500": {
+      "type": "color",
+      "value": "#B99744"
+    },
+    "wood-600": {
+      "type": "color",
+      "value": "#C16800"
+    },
+    "wood-700": {
+      "type": "color",
+      "value": "#A85A00"
+    },
+    "wood-800": {
+      "type": "color",
+      "value": "#8F4D00"
+    },
+    "wood-900": {
+      "type": "color",
+      "value": "#763F00"
+    }
+  }
+}
