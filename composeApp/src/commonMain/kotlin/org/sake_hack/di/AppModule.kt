@@ -44,7 +44,7 @@ val commonModule = module {
 }
 
 /**
- * プラットフォーム固有のモジュール（expect宣言）
+ * プラットフォーム固有のモジュール(expect宣言)
  * DatabaseDriverFactoryなどプラットフォーム固有の依存関係を提供
  */
 expect val platformModule: Module
