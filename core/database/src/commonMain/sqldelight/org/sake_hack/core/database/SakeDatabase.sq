@@ -1,0 +1,110 @@
+-- 酒の種類テーブル
+CREATE TABLE SakeType (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL
+);
+
+-- 酒造テーブル
+CREATE TABLE Brewery (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    originCountry TEXT NOT NULL,
+    originRegion TEXT,
+    latitude REAL,
+    longitude REAL
+);
+
+-- 飲み方テーブル
+CREATE TABLE DrinkStyle (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT
+);
+
+-- 酒テーブル
+CREATE TABLE Sake (
+    id INTEGER PRIMARY KEY NOT NULL,
+    typeId INTEGER NOT NULL,
+    breweryId INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    abv REAL NOT NULL,
+    tasteNotes TEXT NOT NULL,
+    memo TEXT,
+    createdAt INTEGER NOT NULL,
+    updatedAt INTEGER NOT NULL,
+    imageUrl TEXT,
+    FOREIGN KEY (typeId) REFERENCES SakeType(id),
+    FOREIGN KEY (breweryId) REFERENCES Brewery(id)
+);
+
+-- 酒と飲み方の中間テーブル
+CREATE TABLE SakeDrinkStyle (
+    sakeId INTEGER NOT NULL,
+    drinkStyleId INTEGER NOT NULL,
+    PRIMARY KEY (sakeId, drinkStyleId),
+    FOREIGN KEY (sakeId) REFERENCES Sake(id),
+    FOREIGN KEY (drinkStyleId) REFERENCES DrinkStyle(id)
+);
+
+-- クエリ: 全ての酒を取得(JOIN付き)
+getAllSake:
+SELECT
+    Sake.id, Sake.name, Sake.abv, Sake.tasteNotes, Sake.memo, Sake.createdAt, Sake.updatedAt, Sake.imageUrl,
+    SakeType.id AS typeId, SakeType.name AS typeName,
+    Brewery.id AS breweryId, Brewery.name AS breweryName, Brewery.originCountry, Brewery.originRegion, Brewery.latitude, Brewery.longitude
+FROM Sake
+INNER JOIN SakeType ON Sake.typeId = SakeType.id
+INNER JOIN Brewery ON Sake.breweryId = Brewery.id;
+
+-- クエリ: IDで酒を取得(JOIN付き)
+getSakeById:
+SELECT
+    Sake.id, Sake.name, Sake.abv, Sake.tasteNotes, Sake.memo, Sake.createdAt, Sake.updatedAt, Sake.imageUrl,
+    SakeType.id AS typeId, SakeType.name AS typeName,
+    Brewery.id AS breweryId, Brewery.name AS breweryName, Brewery.originCountry, Brewery.originRegion, Brewery.latitude, Brewery.longitude
+FROM Sake
+INNER JOIN SakeType ON Sake.typeId = SakeType.id
+INNER JOIN Brewery ON Sake.breweryId = Brewery.id
+WHERE Sake.id = ?;
+
+-- クエリ: 酒の飲み方を取得
+getDrinkStylesBySakeId:
+SELECT DrinkStyle.id, DrinkStyle.name, DrinkStyle.description
+FROM DrinkStyle
+INNER JOIN SakeDrinkStyle ON DrinkStyle.id = SakeDrinkStyle.drinkStyleId
+WHERE SakeDrinkStyle.sakeId = ?;
+
+-- 挿入: SakeType
+insertSakeType:
+INSERT OR REPLACE INTO SakeType (id, name) VALUES (?, ?);
+
+-- 挿入: Brewery
+insertBrewery:
+INSERT OR REPLACE INTO Brewery (id, name, originCountry, originRegion, latitude, longitude)
+VALUES (?, ?, ?, ?, ?, ?);
+
+-- 挿入: DrinkStyle
+insertDrinkStyle:
+INSERT OR REPLACE INTO DrinkStyle (id, name, description) VALUES (?, ?, ?);
+
+-- 挿入: Sake
+insertSake:
+INSERT OR REPLACE INTO Sake (id, typeId, breweryId, name, abv, tasteNotes, memo, createdAt, updatedAt, imageUrl)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- 挿入: SakeDrinkStyle
+insertSakeDrinkStyle:
+INSERT OR REPLACE INTO SakeDrinkStyle (sakeId, drinkStyleId) VALUES (?, ?);
+
+-- 削除: 全てのデータを削除
+deleteAll:
+DELETE FROM SakeDrinkStyle;
+DELETE FROM Sake;
+DELETE FROM DrinkStyle;
+DELETE FROM Brewery;
+DELETE FROM SakeType;
+
+-- 削除: 指定IDの酒を削除
+deleteSakeById:
+DELETE FROM SakeDrinkStyle WHERE sakeId = ?;
+DELETE FROM Sake WHERE id = ?;
