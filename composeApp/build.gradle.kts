@@ -22,12 +22,35 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            // Feature modules
             implementation(projects.feature.greeting)
+            implementation(projects.feature.sakelist)
+
+            // Core modules
+            implementation(projects.core.common)
+            implementation(projects.core.network)
+            implementation(projects.core.database)
+
+            // Koin
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
+            // Navigation
+            implementation(libs.androidx.navigation.compose)
+
+            // Coil
+            implementation(libs.coil.compose)
+
+            // Ktor (HttpClient型参照のため)
+            implementation(libs.ktor.client.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
