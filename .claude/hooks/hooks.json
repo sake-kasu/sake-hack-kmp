@@ -1,0 +1,37 @@
+{
+  "PreToolUse": [],
+  "PostToolUse": [
+    {
+      "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\.kt$\"",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node .claude/scripts/check-kotlin-safety.js \"$file_path\""
+        }
+      ],
+      "description": "Kotlinファイル編集後に安全性チェック（!! 演算子、全角括弧）"
+    },
+    {
+      "matcher": "tool == \"Write\" && tool_input.file_path matches \"\\.kt$\"",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node .claude/scripts/check-kotlin-safety.js \"$file_path\""
+        }
+      ],
+      "description": "Kotlinファイル作成後に安全性チェック（!! 演算子、全角括弧）"
+    },
+    {
+      "matcher": "tool == \"Write\" && tool_input.file_path matches \"domain/.*\\.kt$\"",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node .claude/scripts/check-architecture.js \"$file_path\""
+        }
+      ],
+      "description": "Domain層ファイル作成時にレイヤー依存チェック"
+    }
+  ],
+  "SessionStart": [],
+  "SessionEnd": []
+}
