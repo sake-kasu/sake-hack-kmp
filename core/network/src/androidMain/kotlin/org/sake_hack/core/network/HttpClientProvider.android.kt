@@ -5,7 +5,7 @@ import io.ktor.client.engine.okhttp.*
 import java.util.concurrent.TimeUnit
 
 /**
- * Android固有のHTTPクライアント実装（OkHttpエンジンを使用）
+ * Android固有のHTTPクライアント実装(OkHttpエンジンを使用)
  */
 actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(OkHttp) {
     config(this)

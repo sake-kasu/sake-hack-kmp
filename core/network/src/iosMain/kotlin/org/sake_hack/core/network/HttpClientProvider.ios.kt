@@ -4,7 +4,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.darwin.*
 
 /**
- * iOS固有のHTTPクライアント実装（Darwinエンジンを使用）
+ * iOS固有のHTTPクライアント実装(Darwinエンジンを使用)
  */
 actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(Darwin) {
     config(this)
