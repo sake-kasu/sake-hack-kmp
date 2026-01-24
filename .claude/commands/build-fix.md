@@ -33,10 +33,10 @@ Kotlinコンパイルエラーとビルドエラーを段階的に修正:
 ## Kotlin/KMP固有のエラーパターン
 
 **型推論失敗:**
-- emptyList()の型を明示: `emptyList<Sake>()`
+- emptyList()の型を明示: 'emptyList<Sake>()'
 
 **null安全性違反:**
-- `!!` の代わりに `?.` と `?:` を使用
+- '!!' の代わりに '?.' と '?:' を使用
 - let/also/runスコープ関数を活用
 
 **expect/actual不一致:**
