@@ -65,7 +65,7 @@ fun SakeDetailDialog(
                     }
                 }
 
-                // 画像セクション（常に表示）
+                // 画像セクション(常に表示)
                 if (sake.imageUrl != null) {
                     AsyncImage(
                         model = sake.imageUrl,
@@ -124,7 +124,7 @@ fun SakeDetailDialog(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // 情報グリッド（2カラムレイアウト）
+                // 情報グリッド(2カラムレイアウト)
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()

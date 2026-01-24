@@ -77,7 +77,7 @@ fun FilterDialog(
                         )
                     )
 
-                    // チェックボックス（2列×2行）
+                    // チェックボックス(2列×2行)
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
