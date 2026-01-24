@@ -3,14 +3,11 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-    }
+    androidTarget()
 
     listOf(
         iosArm64(),
@@ -25,13 +22,14 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.common)
-            // Future: SQLDelight runtime
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
         androidMain.dependencies {
-            // Future: SQLDelight Android driver
+            implementation(libs.sqldelight.android.driver)
         }
         iosMain.dependencies {
-            // Future: SQLDelight Native driver
+            implementation(libs.sqldelight.native.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -39,14 +37,24 @@ kotlin {
     }
 }
 
+sqldelight {
+    databases {
+        create("SakeDatabase") {
+            packageName.set("org.sake_hack.core.database")
+        }
+    }
+}
+
 android {
     namespace = "org.sake_hack.core.database"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+
+    defaultConfig {
+        minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
