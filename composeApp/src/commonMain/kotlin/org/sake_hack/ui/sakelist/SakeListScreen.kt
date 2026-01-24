@@ -174,7 +174,7 @@ private fun InfiniteScrollSakeList(
             )
         }
 
-        // ページネーションエラー（データあり + 追加ロードエラー）
+        // ページネーションエラー(データあり + 追加ロードエラー)
         error?.let { appError ->
             if (sakeList.isNotEmpty()) {
                 item {
@@ -194,7 +194,7 @@ private fun LoadingIndicator(modifier: Modifier = Modifier) {
 }
 
 /**
- * パターン1: 初期ロードエラー（画面中央）
+ * パターン1: 初期ロードエラー(画面中央)
  * デザイン仕様: sake_list.pen - 画面1
  */
 @Composable
@@ -259,7 +259,7 @@ private fun FullScreenErrorView(
 }
 
 /**
- * パターン2: ページネーションエラー（インラインバナー）
+ * パターン2: ページネーションエラー(インラインバナー)
  * デザイン仕様: sake_list.pen - 画面3
  */
 @Composable
@@ -395,7 +395,7 @@ private fun EmptyView(
             )
         }
 
-        // フィルタークリアボタン（フィルター有効時のみ表示）
+        // フィルタークリアボタン(フィルター有効時のみ表示)
         if (isFilterActive) {
             OutlinedButton(
                 onClick = onClearFilter,
