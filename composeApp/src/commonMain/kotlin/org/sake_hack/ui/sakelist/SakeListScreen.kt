@@ -74,49 +74,76 @@ private fun SakeListContent(
         },
         modifier = modifier
     ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            when {
-                uiState.isInitialLoading -> {
-                    LoadingIndicator(modifier = Modifier.align(Alignment.Center))
-                }
+        SakeListMainContent(
+            uiState = uiState,
+            onIntent = onIntent,
+            modifier = Modifier.padding(paddingValues)
+        )
+    }
 
-                uiState.error != null && uiState.displayedSake.isEmpty() -> {
-                    uiState.error?.let { error ->
-                        FullScreenErrorView(
-                            error = error,
-                            onRetry = { onIntent(SakeListIntent.LoadSakeList) },
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
-                }
+    SakeListDialogs(
+        uiState = uiState,
+        onIntent = onIntent
+    )
+}
 
-                uiState.displayedSake.isEmpty() -> {
-                    EmptyView(
-                        isFilterActive = uiState.filterCriteria.isActive(),
-                        onClearFilter = { onIntent(SakeListIntent.ClearFilter) },
+/**
+ * メインコンテンツ: 状態に応じた表示切り替え
+ */
+@Composable
+private fun SakeListMainContent(
+    uiState: SakeListUiState,
+    onIntent: (SakeListIntent) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        when {
+            uiState.isInitialLoading -> {
+                LoadingIndicator(modifier = Modifier.align(Alignment.Center))
+            }
+
+            uiState.error != null && uiState.displayedSake.isEmpty() -> {
+                uiState.error?.let { error ->
+                    FullScreenErrorView(
+                        error = error,
+                        onRetry = { onIntent(SakeListIntent.LoadSakeList) },
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
+            }
 
-                else -> {
-                    InfiniteScrollSakeList(
-                        sakeList = uiState.displayedSake,
-                        hasNextPage = uiState.hasNextPage(),
-                        error = uiState.error,
-                        onSakeClick = { onIntent(SakeListIntent.OpenSakeDetail(it)) },
-                        onLoadMore = { onIntent(SakeListIntent.LoadNextPage) },
-                        onRetry = { onIntent(SakeListIntent.LoadNextPage) }
-                    )
-                }
+            uiState.displayedSake.isEmpty() -> {
+                EmptyView(
+                    isFilterActive = uiState.filterCriteria.isActive(),
+                    onClearFilter = { onIntent(SakeListIntent.ClearFilter) },
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+
+            else -> {
+                InfiniteScrollSakeList(
+                    sakeList = uiState.displayedSake,
+                    hasNextPage = uiState.hasNextPage(),
+                    error = uiState.error,
+                    onSakeClick = { onIntent(SakeListIntent.OpenSakeDetail(it)) },
+                    onLoadMore = { onIntent(SakeListIntent.LoadNextPage) },
+                    onRetry = { onIntent(SakeListIntent.LoadNextPage) }
+                )
             }
         }
     }
+}
 
-    // Dialogs
+/**
+ * ダイアログ表示
+ */
+@Composable
+private fun SakeListDialogs(
+    uiState: SakeListUiState,
+    onIntent: (SakeListIntent) -> Unit
+) {
     if (uiState.isFilterDialogOpen) {
         FilterDialog(
             filterCriteria = uiState.filterCriteria,
