@@ -51,6 +51,7 @@ data class StockListUiState(
 
     // 画像
     val isImagePickerOpen: Boolean = false,
+    val selectedImageSource: ImageSource? = null,
     val isCropMode: Boolean = false,
     val selectedImageData: ByteArray? = null,
 

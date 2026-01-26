@@ -86,6 +86,8 @@ class StockListViewModel(
             StockListIntent.OpenImagePicker -> openImagePicker()
             StockListIntent.CloseImagePicker -> closeImagePicker()
             is StockListIntent.SelectImageSource -> selectImageSource(intent.source)
+            is StockListIntent.OnImageSelected -> onImageSelected(intent.imageData)
+            is StockListIntent.OnImagePickerError -> onImagePickerError(intent.error)
             StockListIntent.CancelCrop -> cancelCrop()
             is StockListIntent.CropImage -> cropImage(intent.croppedData)
         }
@@ -588,16 +590,38 @@ class StockListViewModel(
     }
 
     /**
-     * 画像ソースを選択
+     * 画像ソースを選択（UI層でLauncherを起動する）
      */
     private fun selectImageSource(source: ImageSource) {
-        // プラットフォーム固有の実装が必要
-        // TODO: getImagePicker().pickImage()を使用して実際の画像を取得
         _uiState.update {
             it.copy(
                 isImagePickerOpen = false,
+                selectedImageSource = source
+            )
+        }
+    }
+
+    /**
+     * 画像選択完了（UI層のLauncherから呼ばれる）
+     */
+    private fun onImageSelected(imageData: ByteArray) {
+        _uiState.update {
+            it.copy(
+                selectedImageSource = null,
                 isCropMode = true,
-                selectedImageData = ByteArray(0) // TODO: 実際の画像データ
+                selectedImageData = imageData
+            )
+        }
+    }
+
+    /**
+     * 画像選択エラー
+     */
+    private fun onImagePickerError(error: String) {
+        _uiState.update {
+            it.copy(
+                selectedImageSource = null,
+                error = error
             )
         }
     }

@@ -126,6 +126,7 @@ expect fun ImageCropView(
 /**
  * トリミングツールバー
  */
+@Suppress("DEPRECATION")
 @Composable
 private fun ImageCropToolbar(
     onRotate: () -> Unit,

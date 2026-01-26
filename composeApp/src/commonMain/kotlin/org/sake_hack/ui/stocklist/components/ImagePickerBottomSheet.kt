@@ -51,7 +51,7 @@ fun ImagePickerBottomSheet(
                 onClick = { onSelectSource(ImageSource.CAMERA) }
             )
 
-            Divider(modifier = Modifier.padding(horizontal = 24.dp))
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 24.dp))
 
             // ギャラリーオプション
             ImageSourceOption(
