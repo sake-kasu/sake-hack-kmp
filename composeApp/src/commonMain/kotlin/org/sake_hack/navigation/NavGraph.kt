@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.sake_hack.ui.sakelist.SakeListScreen
+import org.sake_hack.ui.stocklist.StockListScreen
 
 @Composable
 fun SakeAppNavGraph(
@@ -33,6 +34,20 @@ fun SakeAppNavGraph(
                         // Avoid multiple copies of the same destination
                         launchSingleTop = true
                         // Restore state when reselecting a previously selected item
+                        restoreState = true
+                    }
+                }
+            )
+        }
+
+        composable(NavDestinations.STOCK_LIST) {
+            StockListScreen(
+                onNavigate = { route ->
+                    navController.navigate(route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
                         restoreState = true
                     }
                 }
