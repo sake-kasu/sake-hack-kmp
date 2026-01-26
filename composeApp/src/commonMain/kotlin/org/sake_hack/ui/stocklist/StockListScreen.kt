@@ -414,6 +414,17 @@ private fun StockListDialogs(
             onDismiss = { onIntent(StockListIntent.CloseImagePicker) }
         )
     }
+
+    // 画像トリミング画面
+    if (uiState.isCropMode) {
+        uiState.selectedImageData?.let { imageData ->
+            ImageCropScreen(
+                imageData = imageData,
+                onCropComplete = { croppedData -> onIntent(StockListIntent.CropImage(croppedData)) },
+                onCancel = { onIntent(StockListIntent.CancelCrop) }
+            )
+        }
+    }
 }
 
 /**
