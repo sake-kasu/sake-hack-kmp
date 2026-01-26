@@ -391,6 +391,21 @@ private fun StockListDialogs(
             )
         }
     }
+
+    // 追加ダイアログ
+    if (uiState.isCreateDialogOpen) {
+        uiState.creatingStock?.let { creatingStock ->
+            StockCreateDialog(
+                creatingStock = creatingStock,
+                validationErrors = uiState.createValidationErrors,
+                isCreating = uiState.isCreating,
+                onUpdateField = { update -> onIntent(StockListIntent.UpdateCreateField(update)) },
+                onSave = { onIntent(StockListIntent.SaveCreate) },
+                onCancel = { onIntent(StockListIntent.CancelCreate) },
+                onImageClick = { onIntent(StockListIntent.OpenImagePicker) }
+            )
+        }
+    }
 }
 
 /**
