@@ -116,10 +116,12 @@ private fun StockListMainContent(
 
             // エラー状態
             uiState.error != null && uiState.displayedStocks.isEmpty() -> {
-                StockListErrorState(
-                    error = uiState.error,
-                    onRetry = { onIntent(StockListIntent.Refresh) }
-                )
+                uiState.error?.let { errorMessage ->
+                    StockListErrorState(
+                        error = errorMessage,
+                        onRetry = { onIntent(StockListIntent.Refresh) }
+                    )
+                }
             }
 
             // 空状態(フィルター適用後)
@@ -216,11 +218,13 @@ private fun StockList(
         // インラインエラーバナー
         if (uiState.error != null && uiState.displayedStocks.isNotEmpty()) {
             item {
-                StockListErrorBanner(
-                    error = uiState.error,
-                    onRetry = { onIntent(StockListIntent.LoadNextPage) },
-                    onDismiss = { onIntent(StockListIntent.Refresh) }
-                )
+                uiState.error?.let { errorMessage ->
+                    StockListErrorBanner(
+                        error = errorMessage,
+                        onRetry = { onIntent(StockListIntent.LoadNextPage) },
+                        onDismiss = { onIntent(StockListIntent.Refresh) }
+                    )
+                }
             }
         }
     }
@@ -363,12 +367,14 @@ private fun StockListDialogs(
     }
 
     // 詳細ダイアログ
-    if (uiState.isDetailDialogOpen && uiState.selectedStock != null) {
-        StockDetailDialog(
-            stock = uiState.selectedStock,
-            onDismiss = { onIntent(StockListIntent.CloseDetailDialog) },
-            onEdit = { onIntent(StockListIntent.StartEdit) }
-        )
+    if (uiState.isDetailDialogOpen) {
+        uiState.selectedStock?.let { stock ->
+            StockDetailDialog(
+                stock = stock,
+                onDismiss = { onIntent(StockListIntent.CloseDetailDialog) },
+                onEdit = { onIntent(StockListIntent.StartEdit) }
+            )
+        }
     }
 }
 
