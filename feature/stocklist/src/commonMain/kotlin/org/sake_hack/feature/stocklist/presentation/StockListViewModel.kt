@@ -11,6 +11,7 @@ import org.sake_hack.feature.stocklist.domain.validation.StockValidator
 import org.sake_hack.feature.stocklist.domain.model.Stock
 import org.sake_hack.feature.stocklist.domain.model.StockEditField
 import org.sake_hack.feature.stocklist.domain.model.StockEditRequest
+import org.sake_hack.feature.stocklist.domain.model.StockFieldUpdate
 import org.sake_hack.feature.stocklist.domain.usecase.CreateStockUseCase
 import org.sake_hack.feature.stocklist.domain.usecase.GetStockByIdUseCase
 import org.sake_hack.feature.stocklist.domain.usecase.GetStockPageUseCase
@@ -72,13 +73,13 @@ class StockListViewModel(
             // 編集
             StockListIntent.StartEdit -> startEdit()
             StockListIntent.CancelEdit -> cancelEdit()
-            is StockListIntent.UpdateEditField -> updateEditField(intent.field, intent.value)
+            is StockListIntent.UpdateEditField -> updateEditField(intent.update)
             StockListIntent.SaveEdit -> saveEdit()
 
             // 追加
             StockListIntent.OpenCreateDialog -> openCreateDialog()
             StockListIntent.CancelCreate -> cancelCreate()
-            is StockListIntent.UpdateCreateField -> updateCreateField(intent.field, intent.value)
+            is StockListIntent.UpdateCreateField -> updateCreateField(intent.update)
             StockListIntent.SaveCreate -> saveCreate()
 
             // 画像
@@ -397,23 +398,23 @@ class StockListViewModel(
     }
 
     /**
-     * 編集フィールドを更新
+     * 編集フィールドを更新（型安全）
      */
-    private fun updateEditField(field: StockEditField, value: Any) {
+    private fun updateEditField(update: StockFieldUpdate) {
         val currentEdit = _uiState.value.editingStock ?: return
 
-        val updatedEdit = when (field) {
-            StockEditField.NAME -> currentEdit.copy(name = value as String)
-            StockEditField.KANA -> currentEdit.copy(kana = value as String)
-            StockEditField.MAIN_CATEGORY -> currentEdit.copy(mainCategory = value as String)
-            StockEditField.SUB_CATEGORY -> currentEdit.copy(subCategory = value as? String)
-            StockEditField.REGION -> currentEdit.copy(region = value as? String)
-            StockEditField.ABV -> currentEdit.copy(abv = value as Int)
-            StockEditField.INITIAL_VOLUME -> currentEdit.copy(initialVolume = value as Int)
-            StockEditField.REMAINING_VOLUME -> currentEdit.copy(remainingVolumePercent = value as Int)
-            StockEditField.PURCHASE_PRICE -> currentEdit.copy(purchasePrice = value as Int)
-            StockEditField.NOTES -> currentEdit.copy(notes = value as? String)
-            StockEditField.IMAGE -> currentEdit.copy(imageUrl = value as? String)
+        val updatedEdit = when (update) {
+            is StockFieldUpdate.UpdateName -> currentEdit.copy(name = update.value)
+            is StockFieldUpdate.UpdateKana -> currentEdit.copy(kana = update.value)
+            is StockFieldUpdate.UpdateMainCategory -> currentEdit.copy(mainCategory = update.value)
+            is StockFieldUpdate.UpdateSubCategory -> currentEdit.copy(subCategory = update.value)
+            is StockFieldUpdate.UpdateRegion -> currentEdit.copy(region = update.value)
+            is StockFieldUpdate.UpdateAbv -> currentEdit.copy(abv = update.value)
+            is StockFieldUpdate.UpdateInitialVolume -> currentEdit.copy(initialVolume = update.value)
+            is StockFieldUpdate.UpdateRemainingVolume -> currentEdit.copy(remainingVolumePercent = update.value)
+            is StockFieldUpdate.UpdatePurchasePrice -> currentEdit.copy(purchasePrice = update.value)
+            is StockFieldUpdate.UpdateNotes -> currentEdit.copy(notes = update.value)
+            is StockFieldUpdate.UpdateImageUrl -> currentEdit.copy(imageUrl = update.value)
         }
 
         _uiState.update { it.copy(editingStock = updatedEdit) }
@@ -505,23 +506,23 @@ class StockListViewModel(
     }
 
     /**
-     * 追加フィールドを更新
+     * 追加フィールドを更新（型安全）
      */
-    private fun updateCreateField(field: StockEditField, value: Any) {
+    private fun updateCreateField(update: StockFieldUpdate) {
         val currentCreate = _uiState.value.creatingStock ?: return
 
-        val updatedCreate = when (field) {
-            StockEditField.NAME -> currentCreate.copy(name = value as String)
-            StockEditField.KANA -> currentCreate.copy(kana = value as String)
-            StockEditField.MAIN_CATEGORY -> currentCreate.copy(mainCategory = value as String)
-            StockEditField.SUB_CATEGORY -> currentCreate.copy(subCategory = value as? String)
-            StockEditField.REGION -> currentCreate.copy(region = value as? String)
-            StockEditField.ABV -> currentCreate.copy(abv = value as Int)
-            StockEditField.INITIAL_VOLUME -> currentCreate.copy(initialVolume = value as Int)
-            StockEditField.REMAINING_VOLUME -> currentCreate.copy(remainingVolumePercent = value as Int)
-            StockEditField.PURCHASE_PRICE -> currentCreate.copy(purchasePrice = value as Int)
-            StockEditField.NOTES -> currentCreate.copy(notes = value as? String)
-            StockEditField.IMAGE -> currentCreate.copy(imageUrl = value as? String)
+        val updatedCreate = when (update) {
+            is StockFieldUpdate.UpdateName -> currentCreate.copy(name = update.value)
+            is StockFieldUpdate.UpdateKana -> currentCreate.copy(kana = update.value)
+            is StockFieldUpdate.UpdateMainCategory -> currentCreate.copy(mainCategory = update.value)
+            is StockFieldUpdate.UpdateSubCategory -> currentCreate.copy(subCategory = update.value)
+            is StockFieldUpdate.UpdateRegion -> currentCreate.copy(region = update.value)
+            is StockFieldUpdate.UpdateAbv -> currentCreate.copy(abv = update.value)
+            is StockFieldUpdate.UpdateInitialVolume -> currentCreate.copy(initialVolume = update.value)
+            is StockFieldUpdate.UpdateRemainingVolume -> currentCreate.copy(remainingVolumePercent = update.value)
+            is StockFieldUpdate.UpdatePurchasePrice -> currentCreate.copy(purchasePrice = update.value)
+            is StockFieldUpdate.UpdateNotes -> currentCreate.copy(notes = update.value)
+            is StockFieldUpdate.UpdateImageUrl -> currentCreate.copy(imageUrl = update.value)
         }
 
         _uiState.update { it.copy(creatingStock = updatedCreate) }
