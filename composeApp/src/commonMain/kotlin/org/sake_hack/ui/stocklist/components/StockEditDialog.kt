@@ -298,7 +298,7 @@ private fun StockEditImageField(
  * テキストフィールド
  */
 @Composable
-private fun StockEditTextField(
+internal fun StockEditTextField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
@@ -340,7 +340,7 @@ private fun StockEditTextField(
  * 数値フィールド
  */
 @Composable
-private fun StockEditNumberField(
+internal fun StockEditNumberField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
@@ -388,7 +388,7 @@ private fun StockEditNumberField(
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun StockEditDropdownField(
+internal fun StockEditDropdownField(
     label: String,
     value: String,
     options: List<String>,
@@ -458,7 +458,7 @@ private fun StockEditDropdownField(
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun StockEditComboBoxField(
+internal fun StockEditComboBoxField(
     label: String,
     value: String,
     options: List<String>,
@@ -526,7 +526,7 @@ private fun StockEditComboBoxField(
  * テキストエリアフィールド
  */
 @Composable
-private fun StockEditTextAreaField(
+internal fun StockEditTextAreaField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
