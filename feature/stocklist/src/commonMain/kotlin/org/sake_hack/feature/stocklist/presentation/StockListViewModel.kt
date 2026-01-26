@@ -84,6 +84,7 @@ class StockListViewModel(
 
             // 画像
             StockListIntent.OpenImagePicker -> openImagePicker()
+            StockListIntent.CloseImagePicker -> closeImagePicker()
             is StockListIntent.SelectImageSource -> selectImageSource(intent.source)
             is StockListIntent.CropImage -> cropImage(intent.croppedData)
         }
@@ -576,6 +577,13 @@ class StockListViewModel(
      */
     private fun openImagePicker() {
         _uiState.update { it.copy(isImagePickerOpen = true) }
+    }
+
+    /**
+     * 画像ピッカーを閉じる
+     */
+    private fun closeImagePicker() {
+        _uiState.update { it.copy(isImagePickerOpen = false) }
     }
 
     /**

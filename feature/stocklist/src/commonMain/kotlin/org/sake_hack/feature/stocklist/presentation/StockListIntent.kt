@@ -45,6 +45,7 @@ sealed interface StockListIntent {
 
     // 画像
     data object OpenImagePicker : StockListIntent
+    data object CloseImagePicker : StockListIntent
     data class SelectImageSource(val source: ImageSource) : StockListIntent
     data class CropImage(val croppedData: ByteArray) : StockListIntent
 }

@@ -406,6 +406,14 @@ private fun StockListDialogs(
             )
         }
     }
+
+    // 画像ピッカーBottomSheet
+    if (uiState.isImagePickerOpen) {
+        ImagePickerBottomSheet(
+            onSelectSource = { source -> onIntent(StockListIntent.SelectImageSource(source)) },
+            onDismiss = { onIntent(StockListIntent.CloseImagePicker) }
+        )
+    }
 }
 
 /**
