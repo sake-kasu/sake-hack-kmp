@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
  * - padding: 0, 16dp
  * - gap: 16dp
  */
+@Suppress("DEPRECATION")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StockListTopBar(

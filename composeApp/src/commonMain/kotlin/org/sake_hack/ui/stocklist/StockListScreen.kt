@@ -55,6 +55,23 @@ private fun StockListContent(
     onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // 画像選択Launcher
+    val imagePickerLauncher = rememberImagePickerLauncher(
+        onImageSelected = { imageData ->
+            onIntent(StockListIntent.OnImageSelected(imageData))
+        },
+        onError = { error ->
+            onIntent(StockListIntent.OnImagePickerError(error))
+        }
+    )
+
+    // selectedImageSourceが設定されたらLauncherを起動
+    LaunchedEffect(uiState.selectedImageSource) {
+        uiState.selectedImageSource?.let { source ->
+            imagePickerLauncher.launch(source)
+        }
+    }
+
     Scaffold(
         topBar = {
             StockListTopBar(

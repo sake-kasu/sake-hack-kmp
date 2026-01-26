@@ -23,6 +23,7 @@ import org.sake_hack.feature.stocklist.domain.model.StockSortField
  * - gap: 12dp
  * - ボタン: cornerRadius: 8dp, padding: 8dp,12dp, stroke: border-default, thickness: 1
  */
+@Suppress("DEPRECATION")
 @Composable
 fun StockActionBar(
     filterCriteria: StockFilterCriteria,
