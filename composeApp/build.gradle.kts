@@ -32,6 +32,7 @@ kotlin {
             // Feature modules
             implementation(projects.feature.greeting)
             implementation(projects.feature.sakelist)
+            implementation(projects.feature.stocklist)
 
             // Core modules
             implementation(projects.core.common)
