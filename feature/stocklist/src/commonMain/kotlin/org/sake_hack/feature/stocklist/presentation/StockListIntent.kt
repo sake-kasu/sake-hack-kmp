@@ -1,7 +1,7 @@
 package org.sake_hack.feature.stocklist.presentation
 
 import org.sake_hack.feature.stocklist.domain.model.Stock
-import org.sake_hack.feature.stocklist.domain.model.StockEditField
+import org.sake_hack.feature.stocklist.domain.model.StockFieldUpdate
 import org.sake_hack.feature.stocklist.domain.model.StockSortCriteria
 
 /**
@@ -34,13 +34,13 @@ sealed interface StockListIntent {
     // 編集
     data object StartEdit : StockListIntent
     data object CancelEdit : StockListIntent
-    data class UpdateEditField(val field: StockEditField, val value: Any) : StockListIntent
+    data class UpdateEditField(val update: StockFieldUpdate) : StockListIntent
     data object SaveEdit : StockListIntent
 
     // 追加
     data object OpenCreateDialog : StockListIntent
     data object CancelCreate : StockListIntent
-    data class UpdateCreateField(val field: StockEditField, val value: Any) : StockListIntent
+    data class UpdateCreateField(val update: StockFieldUpdate) : StockListIntent
     data object SaveCreate : StockListIntent
 
     // 画像

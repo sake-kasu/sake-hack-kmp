@@ -376,6 +376,21 @@ private fun StockListDialogs(
             )
         }
     }
+
+    // 編集ダイアログ
+    if (uiState.isEditMode) {
+        uiState.editingStock?.let { editingStock ->
+            StockEditDialog(
+                editingStock = editingStock,
+                validationErrors = uiState.validationErrors,
+                isSaving = uiState.isSaving,
+                onUpdateField = { update -> onIntent(StockListIntent.UpdateEditField(update)) },
+                onSave = { onIntent(StockListIntent.SaveEdit) },
+                onCancel = { onIntent(StockListIntent.CancelEdit) },
+                onImageClick = { onIntent(StockListIntent.OpenImagePicker) }
+            )
+        }
+    }
 }
 
 /**
