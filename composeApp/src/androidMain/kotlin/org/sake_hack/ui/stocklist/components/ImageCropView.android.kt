@@ -40,6 +40,10 @@ actual fun ImageCropView(
     var offsetX by remember { mutableStateOf(0f) }
     var offsetY by remember { mutableStateOf(0f) }
 
+    // 画像の実際の表示サイズ
+    var imageDisplayWidth by remember { mutableStateOf(0f) }
+    var imageDisplayHeight by remember { mutableStateOf(0f) }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -60,10 +64,36 @@ actual fun ImageCropView(
                         translationY = offsetY
                     )
                     .pointerInput(Unit) {
+                        // ContentScale.Fitの実際の表示サイズを計算
+                        val imageAspectRatio = bitmap.width.toFloat() / bitmap.height.toFloat()
+                        val containerAspectRatio = size.width / size.height
+
+                        if (imageAspectRatio > containerAspectRatio) {
+                            // 画像が横長、幅に合わせる
+                            imageDisplayWidth = size.width.toFloat()
+                            imageDisplayHeight = size.width / imageAspectRatio
+                        } else {
+                            // 画像が縦長、高さに合わせる
+                            imageDisplayHeight = size.height.toFloat()
+                            imageDisplayWidth = size.height * imageAspectRatio
+                        }
+
                         detectTransformGestures { _, pan, zoom, _ ->
                             scale = (scale * zoom).coerceIn(1f, 5f)
-                            val maxX = (size.width * (scale - 1)) / 2
-                            val maxY = (size.height * (scale - 1)) / 2
+
+                            // クロップ枠のサイズ（正方形、画面幅）
+                            val cropSize = size.width.toFloat()
+
+                            // スケール後の画像サイズ
+                            val scaledWidth = imageDisplayWidth * scale
+                            val scaledHeight = imageDisplayHeight * scale
+
+                            // 移動可能な範囲を計算
+                            // 画像がクロップ枠より大きい場合：はみ出た分だけ動かせる
+                            // 画像がクロップ枠より小さい場合：クロップ枠内で自由に動かせる
+                            val maxX = kotlin.math.abs(scaledWidth - cropSize) / 2
+                            val maxY = kotlin.math.abs(scaledHeight - cropSize) / 2
+
                             offsetX = (offsetX + pan.x).coerceIn(-maxX, maxX)
                             offsetY = (offsetY + pan.y).coerceIn(-maxY, maxY)
                         }
