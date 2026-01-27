@@ -1,6 +1,8 @@
 package org.sake_hack.ui.stocklist.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -260,19 +264,37 @@ private fun StockEditImageField(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
-                .background(MaterialTheme.colorScheme.surfaceVariant),
+                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .clickable(onClick = onClick),
             contentAlignment = Alignment.Center
         ) {
-            if (imageUrl != null) {
-                // TODO: 画像ローディング実装（Coil使用）
-                Icon(
-                    imageVector = Icons.Outlined.Image,
-                    contentDescription = null,
-                    modifier = Modifier.size(64.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+            if (imageUrl != null && imageUrl.startsWith("data:image/")) {
+                // Base64エンコードされた画像を表示
+                Base64ImagePreview(
+                    dataUrl = imageUrl,
+                    modifier = Modifier.fillMaxSize()
                 )
+
+                // 画像変更ボタンをオーバーレイ
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.3f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Surface(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "画像を変更",
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                }
             } else {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -284,9 +306,10 @@ private fun StockEditImageField(
                         modifier = Modifier.size(64.dp),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    TextButton(onClick = onClick) {
-                        Text("画像を選択")
-                    }
+                    Text(
+                        text = "画像を選択",
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
             }
         }

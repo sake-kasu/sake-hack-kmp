@@ -1,6 +1,7 @@
 package org.sake_hack.ui.stocklist.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -274,17 +275,37 @@ private fun StockCreateImageField(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .aspectRatio(1f)
                 .clip(RoundedCornerShape(12.dp))
-                .background(MaterialTheme.colorScheme.surfaceVariant),
+                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .clickable(onClick = onImageClick),
             contentAlignment = Alignment.Center
         ) {
-            if (imageUrl != null) {
-                // TODO: Coil統合時に画像表示実装
-                Text(
-                    text = "画像プレビュー",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+            if (imageUrl != null && imageUrl.startsWith("data:image/")) {
+                // Base64エンコードされた画像を表示
+                Base64ImagePreview(
+                    dataUrl = imageUrl,
+                    modifier = Modifier.fillMaxSize()
                 )
+
+                // 画像変更ボタンをオーバーレイ
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.3f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Surface(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "画像を変更",
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                }
             } else {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -296,9 +317,10 @@ private fun StockCreateImageField(
                         modifier = Modifier.size(48.dp),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    TextButton(onClick = onImageClick) {
-                        Text("画像を選択")
-                    }
+                    Text(
+                        text = "画像を選択",
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
             }
         }
