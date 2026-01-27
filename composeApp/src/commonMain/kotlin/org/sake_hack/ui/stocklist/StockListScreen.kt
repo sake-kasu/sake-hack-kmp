@@ -394,8 +394,8 @@ private fun StockListDialogs(
         }
     }
 
-    // 編集ダイアログ
-    if (uiState.isEditMode) {
+    // 編集ダイアログ(クロップモード時は非表示)
+    if (uiState.isEditMode && !uiState.isCropMode) {
         uiState.editingStock?.let { editingStock ->
             StockEditDialog(
                 editingStock = editingStock,
@@ -409,8 +409,8 @@ private fun StockListDialogs(
         }
     }
 
-    // 追加ダイアログ
-    if (uiState.isCreateDialogOpen) {
+    // 追加ダイアログ(クロップモード時は非表示)
+    if (uiState.isCreateDialogOpen && !uiState.isCropMode) {
         uiState.creatingStock?.let { creatingStock ->
             StockCreateDialog(
                 creatingStock = creatingStock,
