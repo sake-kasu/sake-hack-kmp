@@ -61,6 +61,13 @@ fun StockCreateDialog(
                         .padding(horizontal = 20.dp, vertical = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    // 凡例
+                    Text(
+                        text = "* は必須項目です",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
                     // 画像フィールド
                     StockCreateImageField(
                         imageUrl = creatingStock.imageUrl,

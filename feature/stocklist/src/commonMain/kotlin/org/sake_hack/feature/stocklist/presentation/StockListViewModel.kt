@@ -642,9 +642,6 @@ class StockListViewModel(
      * 画像をトリミング
      */
     private fun cropImage(croppedData: ByteArray) {
-        val selectedStockId = _uiState.value.selectedStock?.id
-        val editingStockId = selectedStockId ?: return
-
         // 画像サイズバリデーション
         val sizeError = StockValidator.validateImageSize(croppedData)
         if (sizeError != null) {
@@ -652,30 +649,86 @@ class StockListViewModel(
             return
         }
 
-        viewModelScope.launch {
-            uploadStockImageUseCase(editingStockId, croppedData)
-                .onSuccess { imageUrl ->
-                    // 編集中の在庫の画像URLを更新
-                    _uiState.value.editingStock?.let { editingStock ->
+        val currentState = _uiState.value
+
+        // 編集モードの場合
+        if (currentState.isEditMode && currentState.selectedStock != null) {
+            viewModelScope.launch {
+                uploadStockImageUseCase(currentState.selectedStock.id, croppedData)
+                    .onSuccess { imageUrl ->
+                        // 編集中の在庫の画像URLを更新
+                        currentState.editingStock?.let { editingStock ->
+                            _uiState.update {
+                                it.copy(
+                                    editingStock = editingStock.copy(imageUrl = imageUrl),
+                                    isCropMode = false,
+                                    selectedImageData = null
+                                )
+                            }
+                        }
+                    }
+                    .onFailure { error ->
                         _uiState.update {
                             it.copy(
-                                editingStock = editingStock.copy(imageUrl = imageUrl),
+                                error = error.message ?: "画像のアップロードに失敗しました",
                                 isCropMode = false,
                                 selectedImageData = null
                             )
                         }
                     }
-                }
-                .onFailure { error ->
-                    _uiState.update {
-                        it.copy(
-                            error = error.message ?: "画像のアップロードに失敗しました",
-                            isCropMode = false,
-                            selectedImageData = null
-                        )
-                    }
-                }
+            }
         }
+        // 追加モードの場合
+        else if (currentState.isCreateDialogOpen && currentState.creatingStock != null) {
+            // 追加モード時は画像データを一時保存し、保存時にアップロード
+            // 現時点では画像データをBase64エンコードしてURLとして保存
+            val imageUrl = "data:image/jpeg;base64,${croppedData.encodeToBase64()}"
+            _uiState.update {
+                it.copy(
+                    creatingStock = currentState.creatingStock.copy(imageUrl = imageUrl),
+                    isCropMode = false,
+                    selectedImageData = null
+                )
+            }
+        }
+    }
+
+    /**
+     * ByteArrayをBase64エンコード
+     */
+    private fun ByteArray.encodeToBase64(): String {
+        // KotlinのBase64エンコーディング
+        val base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+        val output = StringBuilder()
+        var padding = 0
+        var position = 0
+
+        while (position < size) {
+            var b = this[position].toInt() and 0xFF shl 16 and 0xFFFFFF
+            if (position + 1 < size) {
+                b = b or (this[position + 1].toInt() and 0xFF shl 8)
+            } else {
+                padding++
+            }
+            if (position + 2 < size) {
+                b = b or (this[position + 2].toInt() and 0xFF)
+            } else {
+                padding++
+            }
+
+            for (i in 0 until 4 - padding) {
+                val c = b and 0xFC0000 shr 18
+                output.append(base64Chars[c])
+                b = b shl 6
+            }
+            position += 3
+        }
+
+        repeat(padding) {
+            output.append('=')
+        }
+
+        return output.toString()
     }
 
     /**

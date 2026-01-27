@@ -73,6 +73,13 @@ fun StockEditDialog(
                         .padding(horizontal = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    // 凡例
+                    Text(
+                        text = "* は必須項目です",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
                     // 画像
                     StockEditImageField(
                         imageUrl = editingStock.imageUrl,
@@ -311,11 +318,15 @@ internal fun StockEditTextField(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = if (isRequired) "$label（必須）" else label,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
-        )
+        if (isRequired) {
+            RequiredLabel(label)
+        } else {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
 
         OutlinedTextField(
             value = value,
@@ -355,11 +366,15 @@ internal fun StockEditNumberField(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = if (isRequired) "$label（必須）" else label,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
-        )
+        if (isRequired) {
+            RequiredLabel(label)
+        } else {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
 
         OutlinedTextField(
             value = value,
@@ -405,11 +420,15 @@ internal fun StockEditDropdownField(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = if (isRequired) "$label（必須）" else label,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
-        )
+        if (isRequired) {
+            RequiredLabel(label)
+        } else {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
 
         ExposedDropdownMenuBox(
             expanded = expanded,
@@ -474,11 +493,15 @@ internal fun StockEditComboBoxField(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = if (isRequired) "$label（必須）" else label,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
-        )
+        if (isRequired) {
+            RequiredLabel(label)
+        } else {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
 
         ExposedDropdownMenuBox(
             expanded = expanded,
@@ -539,11 +562,15 @@ internal fun StockEditTextAreaField(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = if (isRequired) "$label（必須）" else label,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
-        )
+        if (isRequired) {
+            RequiredLabel(label)
+        } else {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
 
         OutlinedTextField(
             value = value,
@@ -604,5 +631,25 @@ private fun StockEditButtons(
             }
             Text("保存")
         }
+    }
+}
+
+/**
+ * 必須ラベル
+ */
+@Composable
+private fun RequiredLabel(text: String) {
+    Row {
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium
+        )
+        Text(
+            text = " *",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Red
+        )
     }
 }

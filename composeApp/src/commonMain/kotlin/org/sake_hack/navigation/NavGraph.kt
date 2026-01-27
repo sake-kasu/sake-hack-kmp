@@ -20,7 +20,7 @@ fun SakeAppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavDestinations.SAKE_LIST,
+        startDestination = NavDestinations.STOCK_LIST,
         modifier = modifier
     ) {
         composable(NavDestinations.SAKE_LIST) {

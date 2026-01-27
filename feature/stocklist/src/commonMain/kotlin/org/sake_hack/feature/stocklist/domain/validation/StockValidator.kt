@@ -74,26 +74,27 @@ object StockValidator {
             }
         }
 
-        // 度数バリデーション
+        // 度数バリデーション(必須)
         when {
-            request.abv < 0 || request.abv > 100 -> errors[StockEditField.ABV] = "度数は0〜100の範囲で入力してください"
+            request.abv <= 0 -> errors[StockEditField.ABV] = "度数を入力してください"
+            request.abv > 100 -> errors[StockEditField.ABV] = "度数は100以下で入力してください"
         }
 
-        // 購入時容量バリデーション
+        // 購入時容量バリデーション(必須)
         when {
-            request.initialVolume < 0 || request.initialVolume > 10000 -> errors[StockEditField.INITIAL_VOLUME] =
-                "購入時容量は0〜10000の範囲で入力してください"
+            request.initialVolume <= 0 -> errors[StockEditField.INITIAL_VOLUME] = "購入時容量を入力してください"
+            request.initialVolume > 10000 -> errors[StockEditField.INITIAL_VOLUME] = "購入時容量は10000以下で入力してください"
         }
 
-        // 残容量バリデーション
+        // 残容量バリデーション(必須)
         if (!REMAINING_VOLUME_OPTIONS.contains(request.remainingVolumePercent)) {
             errors[StockEditField.REMAINING_VOLUME] = "残容量は0, 25, 50, 75, 100のいずれかを選択してください"
         }
 
-        // 購入時価格バリデーション
+        // 購入時価格バリデーション(必須)
         when {
-            request.purchasePrice < 0 || request.purchasePrice > 1000000 -> errors[StockEditField.PURCHASE_PRICE] =
-                "購入時価格は0〜1000000の範囲で入力してください"
+            request.purchasePrice <= 0 -> errors[StockEditField.PURCHASE_PRICE] = "購入時価格を入力してください"
+            request.purchasePrice > 1000000 -> errors[StockEditField.PURCHASE_PRICE] = "購入時価格は1000000以下で入力してください"
         }
 
         // 自由記述バリデーション(オプショナル)
