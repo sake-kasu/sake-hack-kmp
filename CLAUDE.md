@@ -267,16 +267,77 @@ Repository実装でのデータベースクエリを修正：
 
 **重要**: ビルドとアプリ実行は開発者が Android Studio/Xcode で行います。Claude は以下のコマンドを直接実行しません。
 
-参考コマンド(開発者向け):
+### 共通コマンド
+
 - `./gradlew build` - フルビルド(全モジュールのコンパイル + テスト実行)
 - `./gradlew clean` - ビルド成果物のクリーンアップ
+
+### Android 開発
+
 - `./gradlew :composeApp:run` - Compose Multiplatform アプリの実行(デスクトップ)
 - `./gradlew :androidApp:installDebug` - Android アプリのビルドとインストール
 
-Claude のルール:
+### iOS 開発
+
+このプロジェクトでは、iOSプロジェクトファイルの生成に [XcodeGen](https://github.com/yonaskolb/XcodeGen) を使用しています。
+
+#### 初回セットアップ
+
+1. XcodeGen をインストール（Homebrew経由）:
+   ```shell
+   brew install xcodegen
+   ```
+
+2. iOSプロジェクトを生成:
+   ```shell
+   xcodegen -s iosApp/project.yml
+   ```
+
+#### CLI でのビルド・実行フロー
+
+**固定デバイス**: iPhone 17 Pro (ID: `60958EAE-9046-4FDC-8F1E-D9059E25486A`)
+
+**1. Xcodeプロジェクトをビルド**:
+```shell
+cd iosApp
+xcodebuild -project iosApp.xcodeproj \
+  -scheme iosApp \
+  -destination 'platform=iOS Simulator,id=60958EAE-9046-4FDC-8F1E-D9059E25486A' \
+  build
+```
+
+**2. アプリをインストールして起動**:
+```shell
+# ビルド済みアプリをインストール
+xcrun simctl install 60958EAE-9046-4FDC-8F1E-D9059E25486A \
+  ~/Library/Developer/Xcode/DerivedData/iosApp-*/Build/Products/Debug-iphonesimulator/Sakehackkmp.app
+
+# アプリを起動
+xcrun simctl launch 60958EAE-9046-4FDC-8F1E-D9059E25486A org.sakehack.Sakehackkmp
+```
+
+**3. ワンライナーでビルド〜起動**:
+```shell
+cd iosApp && \
+xcodebuild -project iosApp.xcodeproj \
+  -scheme iosApp \
+  -destination 'platform=iOS Simulator,id=60958EAE-9046-4FDC-8F1E-D9059E25486A' \
+  build && \
+xcrun simctl install 60958EAE-9046-4FDC-8F1E-D9059E25486A \
+  ~/Library/Developer/Xcode/DerivedData/iosApp-*/Build/Products/Debug-iphonesimulator/Sakehackkmp.app && \
+xcrun simctl launch 60958EAE-9046-4FDC-8F1E-D9059E25486A org.sakehack.Sakehackkmp
+```
+
+#### 開発時の注意点
+
+- **新しいファイルを追加した場合**: プロジェクトルートで `xcodegen -s iosApp/project.yml` を再実行
+- **iosApp.xcodeproj は手動編集禁止**: XcodeGenで自動生成されるため、設定を変更する場合は `project.yml` を編集してから再生成
+
+### Claude のルール
+
 - **ビルド**: 開発者に Android Studio でのビルドを依頼する(Gradle コマンドより高速)
 - **Android アプリ実行**: 開発者に Android Studio でのビルド/実行を依頼する
-- **iOS アプリ実行**: 開発者に Xcode での実行を依頼する
+- **iOS アプリ実行**: 開発者に Xcode での実行を依頼する、または上記CLIコマンドを使用
 
 ## アーキテクチャ概要
 

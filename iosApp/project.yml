@@ -2,7 +2,7 @@ name: iosApp
 options:
   bundleIdPrefix: org.sakehack
   deploymentTarget:
-    iOS: "18.2"
+    iOS: "26.2"
   developmentLanguage: en
   createIntermediateGroups: true
 
@@ -76,7 +76,7 @@ targets:
   iosAppTests:
     type: bundle.unit-test
     platform: iOS
-    deploymentTarget: "18.2"
+    deploymentTarget: "26.2"
     sources:
       - path: iosAppTests
     settings:
