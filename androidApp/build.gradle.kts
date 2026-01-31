@@ -50,5 +50,7 @@ android {
 dependencies {
     implementation(projects.composeApp)
     implementation(libs.androidx.activity.compose)
-    debugImplementation(compose.uiTooling)
+
+    // Koin for Android
+    implementation(libs.koin.android)
 }

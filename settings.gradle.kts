@@ -31,6 +31,7 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":androidApp")
 include(":feature:greeting")
+include(":feature:sakelist")
 include(":core:common")
 include(":core:network")
 include(":core:database")
