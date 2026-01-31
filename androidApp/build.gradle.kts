@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.googleServices)
     kotlin("android")
 }
 
@@ -26,8 +27,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "GOOGLE_CLIENT_ID_DEV", "\"${System.getenv("GOOGLE_CLIENT_ID_DEV") ?: ""}\"")
+        }
         getByName("release") {
             isMinifyEnabled = false
+            buildConfigField("String", "GOOGLE_CLIENT_ID_PROD", "\"${System.getenv("GOOGLE_CLIENT_ID_PROD") ?: ""}\"")
         }
     }
 
@@ -44,6 +49,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
