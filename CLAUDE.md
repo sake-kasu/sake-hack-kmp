@@ -290,54 +290,44 @@ Repository実装でのデータベースクエリを修正：
 
 2. iOSプロジェクトを生成:
    ```shell
-   xcodegen -s iosApp/project.yml
+   make xcodegen
    ```
 
 #### CLI でのビルド・実行フロー
 
+Makefileを使用してiOSアプリをビルド・実行します。
+
+| コマンド | 説明 |
+|---------|------|
+| `make help` | ヘルプを表示 |
+| `make xcodegen` | Xcodeプロジェクトを生成 |
+| `make build` | アプリをビルド |
+| `make install` | アプリをシミュレータにインストール |
+| `make run` | アプリを起動 |
+| `make build-and-run` | ビルド〜インストール〜起動を一度に実行 |
+| `make clean` | ビルド成果物をクリーン |
+
+**よく使うコマンド**:
+```shell
+# ビルドして起動（ワンステップ）
+make build-and-run
+
+# ファイル追加後のプロジェクト再生成
+make xcodegen
+```
+
 **固定デバイス**: iPhone 17 Pro (ID: `60958EAE-9046-4FDC-8F1E-D9059E25486A`)
-
-**1. Xcodeプロジェクトをビルド**:
-```shell
-cd iosApp
-xcodebuild -project iosApp.xcodeproj \
-  -scheme iosApp \
-  -destination 'platform=iOS Simulator,id=60958EAE-9046-4FDC-8F1E-D9059E25486A' \
-  build
-```
-
-**2. アプリをインストールして起動**:
-```shell
-# ビルド済みアプリをインストール
-xcrun simctl install 60958EAE-9046-4FDC-8F1E-D9059E25486A \
-  ~/Library/Developer/Xcode/DerivedData/iosApp-*/Build/Products/Debug-iphonesimulator/Sakehackkmp.app
-
-# アプリを起動
-xcrun simctl launch 60958EAE-9046-4FDC-8F1E-D9059E25486A org.sakehack.Sakehackkmp
-```
-
-**3. ワンライナーでビルド〜起動**:
-```shell
-cd iosApp && \
-xcodebuild -project iosApp.xcodeproj \
-  -scheme iosApp \
-  -destination 'platform=iOS Simulator,id=60958EAE-9046-4FDC-8F1E-D9059E25486A' \
-  build && \
-xcrun simctl install 60958EAE-9046-4FDC-8F1E-D9059E25486A \
-  ~/Library/Developer/Xcode/DerivedData/iosApp-*/Build/Products/Debug-iphonesimulator/Sakehackkmp.app && \
-xcrun simctl launch 60958EAE-9046-4FDC-8F1E-D9059E25486A org.sakehack.Sakehackkmp
-```
 
 #### 開発時の注意点
 
-- **新しいファイルを追加した場合**: プロジェクトルートで `xcodegen -s iosApp/project.yml` を再実行
+- **新しいファイルを追加した場合**: `make xcodegen` を再実行
 - **iosApp.xcodeproj は手動編集禁止**: XcodeGenで自動生成されるため、設定を変更する場合は `project.yml` を編集してから再生成
 
 ### Claude のルール
 
 - **ビルド**: 開発者に Android Studio でのビルドを依頼する(Gradle コマンドより高速)
 - **Android アプリ実行**: 開発者に Android Studio でのビルド/実行を依頼する
-- **iOS アプリ実行**: 開発者に Xcode での実行を依頼する、または上記CLIコマンドを使用
+- **iOS アプリ実行**: `make build-and-run` を使用、または開発者に Xcode での実行を依頼する
 
 ## アーキテクチャ概要
 
