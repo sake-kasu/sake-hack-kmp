@@ -1,5 +1,6 @@
 package org.sake_hack.feature.stocklist.presentation
 
+import org.sake_hack.core.common.error.AppError
 import org.sake_hack.feature.stocklist.domain.model.Stock
 import org.sake_hack.feature.stocklist.domain.model.StockEditField
 import org.sake_hack.feature.stocklist.domain.model.StockEditRequest
@@ -22,7 +23,7 @@ data class StockListUiState(
     val isRefreshing: Boolean = false,
 
     // エラー状態
-    val error: String? = null,
+    val error: AppError? = null,
 
     // フィルター
     val filterCriteria: StockFilterCriteria = StockFilterCriteria(),
