@@ -1,28 +1,39 @@
 package org.sake_hack.ui.stocklist
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.ErrorOutline
+import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.SearchOff
+import androidx.compose.material.icons.outlined.Sort
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.distinctUntilChanged
 import org.koin.compose.viewmodel.koinViewModel
+import org.sake_hack.core.common.error.AppError
+import org.sake_hack.core.common.error.toUserMessage
 import org.sake_hack.feature.stocklist.presentation.StockListIntent
 import org.sake_hack.feature.stocklist.presentation.StockListUiState
 import org.sake_hack.feature.stocklist.presentation.StockListViewModel
+import org.sake_hack.ui.components.CommonAppBar
 import org.sake_hack.ui.stocklist.components.*
 
 /**
@@ -56,7 +67,7 @@ private fun StockListContent(
     modifier: Modifier = Modifier
 ) {
     // 画像選択Launcher
-    val imagePickerLauncher = rememberImagePickerLauncher(
+    val imagePickerLauncher: ImagePickerLauncher = rememberImagePickerLauncher(
         onImageSelected = { imageData ->
             onIntent(StockListIntent.OnImageSelected(imageData))
         },
@@ -74,11 +85,25 @@ private fun StockListContent(
 
     Scaffold(
         topBar = {
-            StockListTopBar(
-                filterCount = uiState.filterCriteria.activeFilterCount(),
-                onFilterClick = { onIntent(StockListIntent.OpenFilterDialog) },
-                onSortClick = { onIntent(StockListIntent.OpenSortMenu) }
-            )
+            Column {
+                CommonAppBar(
+                    title = "在庫一覧",
+                    onMenuClick = { /* TODO: ドロワーメニュー実装 */ }
+                )
+                // ActionBar - フィルター・ソートボタン
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                ) {
+                    StockActionBar(
+                        filterCriteria = uiState.filterCriteria,
+                        sortCriteria = uiState.sortCriteria,
+                        onFilterClick = { onIntent(StockListIntent.OpenFilterDialog) },
+                        onSortClick = { onIntent(StockListIntent.OpenSortMenu) }
+                    )
+                }
+            }
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -133,9 +158,9 @@ private fun StockListMainContent(
 
             // エラー状態
             uiState.error != null && uiState.displayedStocks.isEmpty() -> {
-                uiState.error?.let { errorMessage ->
+                uiState.error?.let { error ->
                     StockListErrorState(
-                        error = errorMessage,
+                        error = error,
                         onRetry = { onIntent(StockListIntent.Refresh) }
                     )
                 }
@@ -197,16 +222,6 @@ private fun StockList(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         modifier = modifier.fillMaxSize()
     ) {
-        // アクションバー(フィルター・ソート)
-        item {
-            StockActionBar(
-                filterCriteria = uiState.filterCriteria,
-                sortCriteria = uiState.sortCriteria,
-                onFilterClick = { onIntent(StockListIntent.OpenFilterDialog) },
-                onSortClick = { onIntent(StockListIntent.OpenSortMenu) }
-            )
-        }
-
         // 在庫リスト
         items(
             items = uiState.displayedStocks,
@@ -235,9 +250,9 @@ private fun StockList(
         // インラインエラーバナー
         if (uiState.error != null && uiState.displayedStocks.isNotEmpty()) {
             item {
-                uiState.error?.let { errorMessage ->
-                    StockListErrorBanner(
-                        error = errorMessage,
+                uiState.error?.let { error ->
+                    StockListInlineErrorBanner(
+                        error = error,
                         onRetry = { onIntent(StockListIntent.LoadNextPage) },
                         onDismiss = { onIntent(StockListIntent.Refresh) }
                     )
@@ -263,11 +278,12 @@ private fun StockListLoadingState(
 }
 
 /**
- * エラー状態
+ * エラー状態(フルスクリーン)
+ * デザイン仕様: stock_list.pen - 画面1
  */
 @Composable
 private fun StockListErrorState(
-    error: String,
+    error: AppError,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -278,39 +294,56 @@ private fun StockListErrorState(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Icon(
-            imageVector = Icons.Outlined.CloudOff,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.error
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "在庫の取得に失敗しました",
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text(
-            text = error,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        // アイコン円形背景
+        Box(
+            modifier = Modifier
+                .size(80.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.errorContainer),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.CloudOff,
+                contentDescription = null,
+                modifier = Modifier.size(40.dp),
+                tint = MaterialTheme.colorScheme.error
+            )
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Button(onClick = onRetry) {
-            Icon(
-                imageVector = Icons.Outlined.Refresh,
-                contentDescription = null,
-                modifier = Modifier.size(18.dp)
+        // テキストコンテナ
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = getErrorTitle(error),
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("再試行")
+
+            Text(
+                text = error.toUserMessage(),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // 再試行ボタン
+        if (error.isRetryable) {
+            Button(
+                onClick = onRetry,
+                modifier = Modifier.height(40.dp)
+            ) {
+                Text("再試行")
+            }
         }
     }
 }
@@ -463,4 +496,84 @@ private fun StockListSnackbars(
     }
 
     SnackbarHost(hostState = snackbarHostState)
+}
+
+/**
+ * パターン2: ページネーションエラー(インラインバナー)
+ * デザイン仕様: stock_list.pen - 画面3
+ */
+@Composable
+private fun StockListInlineErrorBanner(
+    error: AppError,
+    onRetry: () -> Unit,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(MaterialTheme.colorScheme.errorContainer)
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.error,
+                shape = RoundedCornerShape(12.dp)
+            )
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        // エラーテキスト行
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.CloudOff,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp),
+                tint = MaterialTheme.colorScheme.error
+            )
+            Text(
+                text = "読み込みに失敗しました",
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                ),
+                color = MaterialTheme.colorScheme.error
+            )
+        }
+
+        // 再試行ボタン
+        if (error.isRetryable) {
+            OutlinedButton(
+                onClick = onRetry,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = MaterialTheme.colorScheme.error
+                ),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.error)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Refresh,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp)
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Text("再試行")
+            }
+        }
+    }
+}
+
+private fun getErrorTitle(error: AppError): String {
+    return when (error) {
+        is AppError.Network -> "接続エラー"
+        is AppError.Http -> when (error.statusCode) {
+            404 -> "データが見つかりません"
+            else -> "エラーが発生しました"
+        }
+        is AppError.Parse -> "データエラー"
+        is AppError.Api -> "エラーが発生しました"
+        is AppError.Unknown -> "エラーが発生しました"
+    }
 }
