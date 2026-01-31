@@ -40,6 +40,7 @@ import org.sake_hack.ui.sakelist.components.*
 @Composable
 fun SakeListScreen(
     onNavigate: (String) -> Unit,
+    onMenuClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SakeListViewModel = koinViewModel()
 ) {
@@ -48,6 +49,7 @@ fun SakeListScreen(
     SakeListContent(
         uiState = uiState,
         onIntent = viewModel::handleIntent,
+        onMenuClick = onMenuClick,
         onNavigate = onNavigate,
         modifier = modifier
     )
@@ -58,6 +60,7 @@ fun SakeListScreen(
 private fun SakeListContent(
     uiState: SakeListUiState,
     onIntent: (SakeListIntent) -> Unit,
+    onMenuClick: () -> Unit,
     onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -66,7 +69,7 @@ private fun SakeListContent(
             Column {
                 CommonAppBar(
                     title = "酒一覧",
-                    onMenuClick = { /* TODO: ドロワーメニュー実装 */ }
+                    onMenuClick = onMenuClick
                 )
                 // ActionBar - フィルターボタン
                 Row(
