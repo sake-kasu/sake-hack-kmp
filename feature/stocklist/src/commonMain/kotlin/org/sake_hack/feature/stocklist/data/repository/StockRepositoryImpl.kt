@@ -26,9 +26,9 @@ class StockRepositoryImpl(
         sortCriteria: StockSortCriteria
     ): Result<StockPageResult> = runCatching {
         // フィルター条件をAPIパラメータに変換
-        val name = filterCriteria?.name
-        val categories = filterCriteria?.categories?.joinToString(",")
-        val region = filterCriteria?.region
+        val name = filterCriteria?.name?.takeIf { it.isNotBlank() }
+        val categories = filterCriteria?.categories?.takeIf { it.isNotEmpty() }?.joinToString(",")
+        val region = filterCriteria?.region?.takeIf { it.isNotBlank() }
 
         // ソート条件をAPIパラメータに変換
         val sortBy = when (sortCriteria.field) {
