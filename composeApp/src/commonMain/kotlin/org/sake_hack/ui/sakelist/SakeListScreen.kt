@@ -15,7 +15,6 @@ import androidx.compose.material.icons.outlined.CloudOff
 import androidx.compose.material.icons.outlined.ErrorOutline
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.SearchOff
-import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshotFlow
@@ -72,42 +71,18 @@ private fun SakeListContent(
                     title = "酒一覧",
                     onMenuClick = onMenuClick
                 )
-                // ActionBar - フィルターボタン
-                Row(
+                // ActionBar - フィルター・ソートボタン
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 ) {
-                    val filterCount = uiState.filterCriteria.activeFilterCount()
-                    OutlinedButton(
-                        onClick = { onIntent(SakeListIntent.OpenFilterDialog) },
-                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.FilterList,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text(
-                            text = "フィルター",
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
-                            )
-                        )
-                        if (filterCount > 0) {
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Badge {
-                                Text(
-                                    text = filterCount.toString(),
-                                    style = MaterialTheme.typography.labelSmall
-                                )
-                            }
-                        }
-                    }
+                    SakeActionBar(
+                        filterCriteria = uiState.filterCriteria,
+                        sortCriteria = uiState.sortCriteria,
+                        onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) },
+                        onSortClick = { onIntent(SakeListIntent.OpenSortMenu) }
+                    )
                 }
             }
         },
@@ -197,6 +172,17 @@ private fun SakeListDialogs(
                 onDismiss = { onIntent(SakeListIntent.CloseDetailDialog) }
             )
         }
+    }
+
+    // ソートメニュー
+    if (uiState.isSortMenuOpen) {
+        SakeSortMenu(
+            currentSortCriteria = uiState.sortCriteria,
+            onSortSelected = { criteria ->
+                onIntent(SakeListIntent.ApplySort(criteria.field, criteria.ascending))
+            },
+            onDismiss = { onIntent(SakeListIntent.CloseSortMenu) }
+        )
     }
 }
 
