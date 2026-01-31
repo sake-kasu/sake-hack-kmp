@@ -19,7 +19,9 @@ data class SakeDto(
     val memo: String? = null,
     val drinkStyles: List<DrinkStyleDto>,
     val createdAt: Instant,
-    val updatedAt: Instant
+    val updatedAt: Instant,
+    val likeCount: Int = 0,
+    val isLikedByCurrentUser: Boolean = false
 ) {
     /**
      * DTOをドメインモデルに変換
@@ -36,7 +38,9 @@ data class SakeDto(
             drinkStyles = drinkStyles.map { it.toDomain() },
             createdAt = createdAt,
             updatedAt = updatedAt,
-            imageUrl = null
+            imageUrl = null,
+            likeCount = likeCount,
+            isLikedByCurrentUser = isLikedByCurrentUser
         )
     }
 }

@@ -41,4 +41,14 @@ interface SakeRepository {
         filterCriteria: FilterCriteria?,
         sortCriteria: SakeSortCriteria? = null
     ): Result<SakePageResult>
+
+    /**
+     * 酒にいいねを追加
+     */
+    suspend fun likeSake(sakeId: Int): Result<Unit>
+
+    /**
+     * 酒のいいねを削除
+     */
+    suspend fun unlikeSake(sakeId: Int): Result<Unit>
 }

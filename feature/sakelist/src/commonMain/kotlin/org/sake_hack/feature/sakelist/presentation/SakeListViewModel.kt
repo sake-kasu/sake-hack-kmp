@@ -21,7 +21,8 @@ import kotlin.native.ObjCName
 @OptIn(ExperimentalObjCName::class)
 @ObjCName("SakeListViewModel")
 class SakeListViewModel(
-    private val getSakePageUseCase: GetSakePageUseCase
+    private val getSakePageUseCase: GetSakePageUseCase,
+    private val toggleSakeLikeUseCase: org.sake_hack.feature.sakelist.domain.usecase.ToggleSakeLikeUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SakeListUiState())
@@ -57,6 +58,9 @@ class SakeListViewModel(
             // Detail intents
             is SakeListIntent.OpenSakeDetail -> openSakeDetail(intent.sake)
             is SakeListIntent.CloseDetailDialog -> closeDetailDialog()
+
+            // Like intents
+            is SakeListIntent.ToggleLike -> toggleLike(intent.sakeId, intent.isCurrentlyLiked)
         }
     }
 
@@ -246,6 +250,28 @@ class SakeListViewModel(
     private fun closeDetailDialog() {
         _uiState.update {
             it.copy(selectedSake = null, isDetailDialogOpen = false)
+        }
+    }
+
+    private fun toggleLike(sakeId: Int, isCurrentlyLiked: Boolean) {
+        viewModelScope.launch {
+            // ローディング状態にはしない（ユーザー操作を阻害しない）
+            toggleSakeLikeUseCase(sakeId, isCurrentlyLiked)
+                .onSuccess {
+                    // 酒一覧を再取得してUIを更新
+                    loadInitialPage()
+                }
+                .onFailure { exception ->
+                    val appError = if (exception is AppError) {
+                        exception
+                    } else {
+                        AppError.Unknown(
+                            errorMessage = exception.message ?: "いいねの更新に失敗しました",
+                            errorCause = exception
+                        )
+                    }
+                    _uiState.update { it.copy(error = appError) }
+                }
         }
     }
 }
