@@ -60,9 +60,11 @@ struct SakeListState: Equatable {
 /// 酒一覧画面の Model (MV パターン)
 ///
 /// 責務:
-/// - KMP SakeListViewModel との連携
 /// - UI 状態の管理
 /// - ユーザーアクションの処理
+///
+/// 注: 簡易版実装のため、現在はSwift単独で動作
+/// 将来的には KMP SakeListViewModel との連携を予定
 @Observable
 final class SakeListModel {
 
@@ -71,22 +73,10 @@ final class SakeListModel {
     var state = SakeListState()
     var error: ModelError?
 
-    // MARK: - Private Properties
-
-    // KMP ViewModel への参照 (実際の連携時に使用)
-    // private let viewModel: SakeListViewModel
-    // private var stateObserver: Closeable?
-
     // MARK: - Initialization
 
     init() {
-        // 実際の実装では KMP ViewModel を受け取る
-        // init(viewModel: SakeListViewModel) {
-        //     self.viewModel = viewModel
-        //     observeState()
-        // }
-
-        // サンプルデータをロード
+        // 簡易版: 初期化時にデータをロード
         loadSampleData()
     }
 
