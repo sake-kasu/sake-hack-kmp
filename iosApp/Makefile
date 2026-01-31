@@ -24,7 +24,6 @@ xcodegen:
 
 build:
 	@echo "Building iOS app for $(DEVICE_ID)..."
-	cd iosApp && \
 	xcodebuild -project $(PROJECT) \
 	  -scheme $(SCHEME) \
 	  -destination 'platform=iOS Simulator,id=$(DEVICE_ID)' \
@@ -41,7 +40,6 @@ run:
 
 build-and-run:
 	@echo "Building, installing and running iOS app..."
-	cd iosApp && \
 	xcodebuild -project $(PROJECT) \
 	  -scheme $(SCHEME) \
 	  -destination 'platform=iOS Simulator,id=$(DEVICE_ID)' \
@@ -52,7 +50,6 @@ build-and-run:
 
 clean:
 	@echo "Cleaning build artifacts..."
-	cd iosApp && \
 	xcodebuild -project $(PROJECT) \
 	  -scheme $(SCHEME) \
 	  clean

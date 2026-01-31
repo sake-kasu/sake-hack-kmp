@@ -24,7 +24,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            // Future: Kotlin coroutines, serialization, datetime
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.androidx.lifecycle.viewmodelCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
