@@ -10,6 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.sake_hack.ui.components.CommonAppBar
 import org.sake_hack.ui.sakelist.SakeListScreen
 import org.sake_hack.ui.stocklist.StockListScreen
 
@@ -93,14 +94,10 @@ private fun PlaceholderScreen(
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        bottomBar = {
-            org.sake_hack.ui.sakelist.components.SakeBottomNavigation(
-                selectedRoute = when (title) {
-                    "ホーム" -> NavDestinations.HOME
-                    "設定" -> NavDestinations.SETTINGS
-                    else -> ""
-                },
-                onNavigate = onNavigate
+        topBar = {
+            CommonAppBar(
+                title = title,
+                onMenuClick = { /* TODO: ドロワーメニュー実装 */ }
             )
         },
         modifier = modifier
