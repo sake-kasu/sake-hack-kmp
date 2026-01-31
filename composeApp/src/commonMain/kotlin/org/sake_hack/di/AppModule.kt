@@ -46,7 +46,7 @@ val commonModule = module {
     // Data Sources
     single { SakeApiService(get()) }
     single { SakeLocalDataSource(get()) }
-    single { StockApiService() }
+    single { StockApiService(get()) }
 
     // HTTP Client
     single<HttpClient> { createAppHttpClient() }
