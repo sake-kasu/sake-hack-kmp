@@ -1,6 +1,8 @@
 package org.sake_hack.feature.stocklist.data.remote
 
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.datetime.Clock
 import org.sake_hack.feature.stocklist.data.remote.dto.ImageUploadResponseDto
 import org.sake_hack.feature.stocklist.data.remote.dto.MetaDto
@@ -17,6 +19,7 @@ import kotlin.random.Random
 class StockApiService {
     private var stockDatabase: MutableList<StockDto> = generateSampleData().toMutableList()
     private var nextId: Int = stockDatabase.maxOfOrNull { it.id }?.plus(1) ?: 1
+    private val mutex = Mutex()
 
     /**
      * 在庫ページを取得
@@ -38,7 +41,7 @@ class StockApiService {
         region: String? = null,
         sortBy: String = "name",
         order: String = "asc"
-    ): StockPageResponseDto {
+    ): StockPageResponseDto = mutex.withLock {
         // ネットワーク遅延シミュレート
         delay(500)
 
@@ -94,7 +97,7 @@ class StockApiService {
         val total = filteredStocks.size.toLong()
         val paginatedStocks = filteredStocks.drop(offset).take(limit)
 
-        return StockPageResponseDto(
+        return@withLock StockPageResponseDto(
             data = paginatedStocks,
             meta = MetaDto(
                 total = total,
@@ -110,7 +113,7 @@ class StockApiService {
      * @param id 在庫ID
      * @return 在庫DTO
      */
-    suspend fun getStockById(id: Int): StockDto {
+    suspend fun getStockById(id: Int): StockDto = mutex.withLock {
         // ネットワーク遅延シミュレート
         delay(300)
 
@@ -119,7 +122,7 @@ class StockApiService {
             throw Exception("Mock API Error: Stock not found")
         }
 
-        return stockDatabase.find { it.id == id }
+        return@withLock stockDatabase.find { it.id == id }
             ?: throw Exception("Stock with ID $id not found")
     }
 
@@ -129,7 +132,7 @@ class StockApiService {
      * @param request 在庫作成リクエスト
      * @return 作成された在庫DTO
      */
-    suspend fun createStock(request: StockEditRequestDto): StockDto {
+    suspend fun createStock(request: StockEditRequestDto): StockDto = mutex.withLock {
         // ネットワーク遅延シミュレート
         delay(500)
 
@@ -157,7 +160,7 @@ class StockApiService {
         )
 
         stockDatabase.add(newStock)
-        return newStock
+        return@withLock newStock
     }
 
     /**
@@ -167,7 +170,7 @@ class StockApiService {
      * @param request 在庫更新リクエスト
      * @return 更新された在庫DTO
      */
-    suspend fun updateStock(id: Int, request: StockEditRequestDto): StockDto {
+    suspend fun updateStock(id: Int, request: StockEditRequestDto): StockDto = mutex.withLock {
         // ネットワーク遅延シミュレート
         delay(500)
 
@@ -200,7 +203,7 @@ class StockApiService {
         )
 
         stockDatabase[index] = updatedStock
-        return updatedStock
+        return@withLock updatedStock
     }
 
     /**
@@ -210,7 +213,7 @@ class StockApiService {
      * @param imageData 画像データ
      * @return 画像アップロードレスポンス
      */
-    suspend fun uploadStockImage(id: Int, imageData: ByteArray): ImageUploadResponseDto {
+    suspend fun uploadStockImage(id: Int, imageData: ByteArray): ImageUploadResponseDto = mutex.withLock {
         // ネットワーク遅延シミュレート
         delay(1000)
 
@@ -232,7 +235,7 @@ class StockApiService {
             )
         }
 
-        return ImageUploadResponseDto(imageUrl = mockImageUrl)
+        return@withLock ImageUploadResponseDto(imageUrl = mockImageUrl)
     }
 
     /**
