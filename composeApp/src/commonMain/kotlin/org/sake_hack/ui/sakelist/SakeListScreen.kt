@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.CloudOff
 import androidx.compose.material.icons.outlined.ErrorOutline
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.SearchOff
+import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshotFlow
@@ -33,6 +34,7 @@ import org.sake_hack.core.common.error.toUserMessage
 import org.sake_hack.feature.sakelist.presentation.SakeListIntent
 import org.sake_hack.feature.sakelist.presentation.SakeListUiState
 import org.sake_hack.feature.sakelist.presentation.SakeListViewModel
+import org.sake_hack.ui.components.CommonAppBar
 import org.sake_hack.ui.sakelist.components.*
 
 @Composable
@@ -61,16 +63,49 @@ private fun SakeListContent(
 ) {
     Scaffold(
         topBar = {
-            SakeListTopBar(
-                filterCount = uiState.filterCriteria.activeFilterCount(),
-                onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) }
-            )
-        },
-        bottomBar = {
-            SakeBottomNavigation(
-                selectedRoute = "sake_list",
-                onNavigate = onNavigate
-            )
+            Column {
+                CommonAppBar(
+                    title = "酒一覧",
+                    onMenuClick = { /* TODO: ドロワーメニュー実装 */ }
+                )
+                // ActionBar - フィルターボタン
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val filterCount = uiState.filterCriteria.activeFilterCount()
+                    OutlinedButton(
+                        onClick = { onIntent(SakeListIntent.OpenFilterDialog) },
+                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.FilterList,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "フィルター",
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Medium
+                            )
+                        )
+                        if (filterCount > 0) {
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Badge {
+                                Text(
+                                    text = filterCount.toString(),
+                                    style = MaterialTheme.typography.labelSmall
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         },
         modifier = modifier
     ) { paddingValues ->
