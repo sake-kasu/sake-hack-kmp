@@ -90,17 +90,10 @@ extension EnvironmentValues {
 
 // MARK: - KMP Container
 
-/// KMP の Koin コンテナをラップするクラス
+/// KMP の DI コンテナをラップするクラス
 ///
-/// アプリ起動時に初期化し、Environment に提供
+/// KMP 連携は今後実装
 final class KMPContainer {
-
-    /// KMP モジュールを初期化
-    /// アプリ起動時に呼び出す
-    func initialize() {
-        // KMP の Koin 初期化
-        // KoinHelper.doInit()
-    }
 
     // MARK: - Model Factory Methods
 

@@ -363,4 +363,5 @@ struct SakeDetailSheet: View {
 
 #Preview {
     SakeListView()
+        .previewInterfaceOrientation(.portrait)
 }

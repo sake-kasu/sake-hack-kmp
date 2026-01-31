@@ -1,22 +1,18 @@
 import SwiftUI
-import Greeting
 
 /// メインコンテンツビュー
-///
-/// MV パターンでは View が Model を直接参照
-/// KMP Clean Architecture のビジネスロジックは Model 層経由でアクセス
 struct ContentView: View {
 
     var body: some View {
         TabView {
-            // 酒一覧タブ (MV パターン サンプル)
+            // 酒一覧タブ
             SakeListView()
                 .tabItem {
                     Label("酒一覧", systemImage: "wineglass")
                 }
 
-            // KMP連携サンプルタブ
-            KMPSampleView()
+            // KMP連携プレースホルダー
+            PlaceholderView()
                 .tabItem {
                     Label("KMPサンプル", systemImage: "swift")
                 }
@@ -24,13 +20,10 @@ struct ContentView: View {
     }
 }
 
-// MARK: - KMP Sample View
+// MARK: - Placeholder View
 
-/// KMP 連携サンプルビュー
-/// Greeting モジュールとの連携例
-struct KMPSampleView: View {
-
-    @State private var showContent = false
+/// KMP 連携プレースホルダー（今後実装）
+struct PlaceholderView: View {
 
     var body: some View {
         NavigationStack {
@@ -41,34 +34,12 @@ struct KMPSampleView: View {
                     .font(.system(size: 100))
                     .foregroundStyle(.orange)
 
-                Text("KMP Clean Architecture")
+                Text("KMP 連携")
                     .font(.title2)
                     .fontWeight(.semibold)
 
-                Text("SwiftUI MV + Kotlin Multiplatform")
+                Text("Kotlin Multiplatform との連携を今後実装")
                     .foregroundStyle(.secondary)
-
-                Button("プラットフォーム情報を表示") {
-                    withAnimation {
-                        showContent.toggle()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-
-                if showContent {
-                    VStack(spacing: 12) {
-                        Text("KMP UseCase からの取得:")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-
-                        Text(GetPlatformInfoUseCase().invoke())
-                            .font(.headline)
-                            .padding()
-                            .background(Color.blue.opacity(0.1))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    }
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                }
 
                 Spacer()
             }

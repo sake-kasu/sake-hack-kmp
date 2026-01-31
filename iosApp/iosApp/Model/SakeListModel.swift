@@ -63,8 +63,6 @@ struct SakeListState: Equatable {
 /// - KMP SakeListViewModel との連携
 /// - UI 状態の管理
 /// - ユーザーアクションの処理
-///
-/// SwiftUI View から直接参照され、@State や @Binding なしで状態を共有
 @Observable
 final class SakeListModel {
 

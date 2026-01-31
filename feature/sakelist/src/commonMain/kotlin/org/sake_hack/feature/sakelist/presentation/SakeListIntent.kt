@@ -1,6 +1,7 @@
 package org.sake_hack.feature.sakelist.presentation
 
 import org.sake_hack.feature.sakelist.domain.model.Sake
+import org.sake_hack.feature.sakelist.domain.model.SortOption
 
 /**
  * 酒一覧画面のユーザーインテント（MVIパターン）
@@ -19,6 +20,11 @@ sealed interface SakeListIntent {
     data class UpdateRegionFilter(val region: String?) : SakeListIntent
     data object ApplyFilter : SakeListIntent
     data object ClearFilter : SakeListIntent
+
+    // 並べ替え
+    data object OpenSortMenu : SakeListIntent
+    data object CloseSortMenu : SakeListIntent
+    data class SelectSort(val sortOption: SortOption) : SakeListIntent
 
     // 詳細
     data class OpenSakeDetail(val sake: Sake) : SakeListIntent

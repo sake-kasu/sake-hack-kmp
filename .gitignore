@@ -12,6 +12,9 @@ captures
 .cxx
 # XcodeGenで生成されるiosApp.xcodeproj
 iosApp/iosApp.xcodeproj/
+# 環境変数ファイル（ローカルのみ）
+.env
+iosApp/.env
 
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj

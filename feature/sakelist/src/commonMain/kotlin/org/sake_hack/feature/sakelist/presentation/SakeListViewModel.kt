@@ -10,12 +10,16 @@ import kotlinx.coroutines.launch
 import org.sake_hack.core.common.error.AppError
 import org.sake_hack.feature.sakelist.domain.model.Sake
 import org.sake_hack.feature.sakelist.domain.usecase.GetSakePageUseCase
+import kotlin.experimental.ExperimentalObjCName
+import kotlin.native.ObjCName
 
 /**
  * 酒一覧画面のViewModel（MVIパターン）
  * UI状態を管理し、ユーザーインテントを処理
  * ページネーション機能を実装
  */
+@OptIn(ExperimentalObjCName::class)
+@ObjCName("SakeListViewModel")
 class SakeListViewModel(
     private val getSakePageUseCase: GetSakePageUseCase
 ) : ViewModel() {
@@ -44,6 +48,11 @@ class SakeListViewModel(
             is SakeListIntent.UpdateRegionFilter -> updateRegionFilter(intent.region)
             is SakeListIntent.ApplyFilter -> applyFilter()
             is SakeListIntent.ClearFilter -> clearFilter()
+
+            // Sort intents
+            is SakeListIntent.OpenSortMenu -> openSortMenu()
+            is SakeListIntent.CloseSortMenu -> closeSortMenu()
+            is SakeListIntent.SelectSort -> selectSort(intent.sortOption)
 
             // Detail intents
             is SakeListIntent.OpenSakeDetail -> openSakeDetail(intent.sake)
@@ -215,5 +224,24 @@ class SakeListViewModel(
         _uiState.update {
             it.copy(selectedSake = null, isDetailDialogOpen = false)
         }
+    }
+
+    private fun selectSort(sortOption: org.sake_hack.feature.sakelist.domain.model.SortOption) {
+        _uiState.update { state ->
+            val sortedList = sortOption.sort(state.displayedSake)
+            state.copy(
+                sortOption = sortOption,
+                displayedSake = sortedList,
+                isSortMenuOpen = false
+            )
+        }
+    }
+
+    private fun openSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = true) }
+    }
+
+    private fun closeSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = false) }
     }
 }
