@@ -52,7 +52,7 @@ class SakeListViewModel(
             // Sort intents
             is SakeListIntent.OpenSortMenu -> openSortMenu()
             is SakeListIntent.CloseSortMenu -> closeSortMenu()
-            is SakeListIntent.SelectSort -> selectSort(intent.sortOption)
+            is SakeListIntent.ApplySort -> applySort(intent.field, intent.ascending)
 
             // Detail intents
             is SakeListIntent.OpenSakeDetail -> openSakeDetail(intent.sake)
@@ -77,7 +77,8 @@ class SakeListViewModel(
             getSakePageUseCase(
                 offset = 0,
                 limit = 20,
-                filterCriteria = _uiState.value.filterCriteria
+                filterCriteria = _uiState.value.filterCriteria,
+                sortCriteria = _uiState.value.sortCriteria
             )
             .onSuccess { result ->
                 _uiState.update { state ->
@@ -128,7 +129,8 @@ class SakeListViewModel(
             getSakePageUseCase(
                 offset = nextOffset,
                 limit = 20,
-                filterCriteria = currentState.filterCriteria
+                filterCriteria = currentState.filterCriteria,
+                sortCriteria = currentState.sortCriteria
             )
             .onSuccess { result ->
                 _uiState.update { state ->
@@ -214,6 +216,27 @@ class SakeListViewModel(
         loadInitialPage()
     }
 
+    private fun openSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = true) }
+    }
+
+    private fun closeSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = false) }
+    }
+
+    private fun applySort(field: org.sake_hack.feature.sakelist.domain.model.SakeSortField, ascending: Boolean) {
+        _uiState.update { state ->
+            state.copy(
+                sortCriteria = org.sake_hack.feature.sakelist.domain.model.SakeSortCriteria(
+                    field = field,
+                    ascending = ascending
+                ),
+                isSortMenuOpen = false
+            )
+        }
+        loadInitialPage()
+    }
+
     private fun openSakeDetail(sake: Sake) {
         _uiState.update {
             it.copy(selectedSake = sake, isDetailDialogOpen = true)
@@ -224,24 +247,5 @@ class SakeListViewModel(
         _uiState.update {
             it.copy(selectedSake = null, isDetailDialogOpen = false)
         }
-    }
-
-    private fun selectSort(sortOption: org.sake_hack.feature.sakelist.domain.model.SortOption) {
-        _uiState.update { state ->
-            val sortedList = sortOption.sort(state.displayedSake)
-            state.copy(
-                sortOption = sortOption,
-                displayedSake = sortedList,
-                isSortMenuOpen = false
-            )
-        }
-    }
-
-    private fun openSortMenu() {
-        _uiState.update { it.copy(isSortMenuOpen = true) }
-    }
-
-    private fun closeSortMenu() {
-        _uiState.update { it.copy(isSortMenuOpen = false) }
     }
 }

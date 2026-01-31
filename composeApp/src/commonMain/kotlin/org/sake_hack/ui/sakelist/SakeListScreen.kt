@@ -21,6 +21,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,11 +34,13 @@ import org.sake_hack.core.common.error.toUserMessage
 import org.sake_hack.feature.sakelist.presentation.SakeListIntent
 import org.sake_hack.feature.sakelist.presentation.SakeListUiState
 import org.sake_hack.feature.sakelist.presentation.SakeListViewModel
+import org.sake_hack.ui.components.CommonAppBar
 import org.sake_hack.ui.sakelist.components.*
 
 @Composable
 fun SakeListScreen(
     onNavigate: (String) -> Unit,
+    onMenuClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SakeListViewModel = koinViewModel()
 ) {
@@ -46,6 +49,7 @@ fun SakeListScreen(
     SakeListContent(
         uiState = uiState,
         onIntent = viewModel::handleIntent,
+        onMenuClick = onMenuClick,
         onNavigate = onNavigate,
         modifier = modifier
     )
@@ -56,21 +60,31 @@ fun SakeListScreen(
 private fun SakeListContent(
     uiState: SakeListUiState,
     onIntent: (SakeListIntent) -> Unit,
+    onMenuClick: () -> Unit,
     onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
         topBar = {
-            SakeListTopBar(
-                filterCount = uiState.filterCriteria.activeFilterCount(),
-                onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) }
-            )
-        },
-        bottomBar = {
-            SakeBottomNavigation(
-                selectedRoute = "sake_list",
-                onNavigate = onNavigate
-            )
+            Column {
+                CommonAppBar(
+                    title = "酒一覧",
+                    onMenuClick = onMenuClick
+                )
+                // ActionBar - フィルター・ソートボタン
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                ) {
+                    SakeActionBar(
+                        filterCriteria = uiState.filterCriteria,
+                        sortCriteria = uiState.sortCriteria,
+                        onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) },
+                        onSortClick = { onIntent(SakeListIntent.OpenSortMenu) }
+                    )
+                }
+            }
         },
         modifier = modifier
     ) { paddingValues ->
@@ -159,6 +173,17 @@ private fun SakeListDialogs(
             )
         }
     }
+
+    // ソートメニュー
+    if (uiState.isSortMenuOpen) {
+        SakeSortMenu(
+            currentSortCriteria = uiState.sortCriteria,
+            onSortSelected = { criteria ->
+                onIntent(SakeListIntent.ApplySort(criteria.field, criteria.ascending))
+            },
+            onDismiss = { onIntent(SakeListIntent.CloseSortMenu) }
+        )
+    }
 }
 
 @Composable
@@ -190,8 +215,13 @@ private fun InfiniteScrollSakeList(
         state = listState,
         modifier = modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surfaceContainerLowest),
-        contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
+            .background(Color(0xFFF8F8FB)), // デザイン仕様: $sumi-50
+        contentPadding = PaddingValues(
+            top = 12.dp,
+            start = 16.dp,
+            end = 16.dp,
+            bottom = 16.dp
+        ),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(sakeList, key = { it.id }) { sake ->

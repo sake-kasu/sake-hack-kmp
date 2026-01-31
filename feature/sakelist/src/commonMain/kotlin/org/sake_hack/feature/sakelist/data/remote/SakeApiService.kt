@@ -24,13 +24,17 @@ class SakeApiService(
      * @param sakeName 酒名でフィルタ（部分一致）
      * @param sakeTypes 酒の種類でフィルタ（複数選択可能）
      * @param region 産地でフィルタ（部分一致）
+     * @param sortBy ソートフィールド（name, type, region）
+     * @param order ソート順（asc, desc）
      */
     suspend fun fetchSakePage(
         offset: Int,
         limit: Int,
         sakeName: String? = null,
         sakeTypes: Set<String>? = null,
-        region: String? = null
+        region: String? = null,
+        sortBy: String? = null,
+        order: String? = null
     ): SakePageResponseDto {
         return httpClient.get("$baseUrl/sakes") {
             parameter("offset", offset)
@@ -40,6 +44,8 @@ class SakeApiService(
                 parameter("sakeTypes", it.joinToString(","))
             }
             region?.takeIf { it.isNotBlank() }?.let { parameter("region", it) }
+            sortBy?.let { parameter("sortBy", it) }
+            order?.let { parameter("order", it) }
         }.body()
     }
 

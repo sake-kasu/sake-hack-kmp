@@ -3,7 +3,7 @@ package org.sake_hack.feature.sakelist.presentation
 import org.sake_hack.core.common.error.AppError
 import org.sake_hack.feature.sakelist.domain.model.FilterCriteria
 import org.sake_hack.feature.sakelist.domain.model.Sake
-import org.sake_hack.feature.sakelist.domain.model.SortOption
+import org.sake_hack.feature.sakelist.domain.model.SakeSortCriteria
 
 /**
  * 酒一覧画面のUI状態（MVIパターン）
@@ -29,8 +29,8 @@ data class SakeListUiState(
     val filterCriteria: FilterCriteria = FilterCriteria(),
     val isFilterDialogOpen: Boolean = false,
 
-    // 並べ替え状態
-    val sortOption: SortOption = SortOption.DEFAULT,
+    // ソート状態
+    val sortCriteria: SakeSortCriteria = SakeSortCriteria(),
     val isSortMenuOpen: Boolean = false,
 
     // 詳細状態
