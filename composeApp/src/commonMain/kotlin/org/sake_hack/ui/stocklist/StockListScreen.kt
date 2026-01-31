@@ -42,12 +42,14 @@ import org.sake_hack.ui.stocklist.components.*
 @Composable
 fun StockListScreen(
     onNavigate: (String) -> Unit,
+    onMenuClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: StockListViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     StockListContent(
+        onMenuClick = onMenuClick,
         uiState = uiState,
         onIntent = viewModel::handleIntent,
         onNavigate = onNavigate,
@@ -61,6 +63,7 @@ fun StockListScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun StockListContent(
+    onMenuClick: () -> Unit,
     uiState: StockListUiState,
     onIntent: (StockListIntent) -> Unit,
     onNavigate: (String) -> Unit,
@@ -88,7 +91,7 @@ private fun StockListContent(
             Column {
                 CommonAppBar(
                     title = "在庫一覧",
-                    onMenuClick = { /* TODO: ドロワーメニュー実装 */ }
+                    onMenuClick = onMenuClick
                 )
                 // ActionBar - フィルター・ソートボタン
                 Box(
