@@ -20,6 +20,11 @@ sealed interface SakeListIntent {
     data object ApplyFilter : SakeListIntent
     data object ClearFilter : SakeListIntent
 
+    // ソート
+    data object OpenSortMenu : SakeListIntent
+    data object CloseSortMenu : SakeListIntent
+    data class ApplySort(val field: org.sake_hack.feature.sakelist.domain.model.SakeSortField, val ascending: Boolean) : SakeListIntent
+
     // 詳細
     data class OpenSakeDetail(val sake: Sake) : SakeListIntent
     data object CloseDetailDialog : SakeListIntent

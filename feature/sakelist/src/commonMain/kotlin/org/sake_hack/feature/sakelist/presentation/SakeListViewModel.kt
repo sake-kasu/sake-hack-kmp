@@ -45,6 +45,11 @@ class SakeListViewModel(
             is SakeListIntent.ApplyFilter -> applyFilter()
             is SakeListIntent.ClearFilter -> clearFilter()
 
+            // Sort intents
+            is SakeListIntent.OpenSortMenu -> openSortMenu()
+            is SakeListIntent.CloseSortMenu -> closeSortMenu()
+            is SakeListIntent.ApplySort -> applySort(intent.field, intent.ascending)
+
             // Detail intents
             is SakeListIntent.OpenSakeDetail -> openSakeDetail(intent.sake)
             is SakeListIntent.CloseDetailDialog -> closeDetailDialog()
@@ -68,7 +73,8 @@ class SakeListViewModel(
             getSakePageUseCase(
                 offset = 0,
                 limit = 20,
-                filterCriteria = _uiState.value.filterCriteria
+                filterCriteria = _uiState.value.filterCriteria,
+                sortCriteria = _uiState.value.sortCriteria
             )
             .onSuccess { result ->
                 _uiState.update { state ->
@@ -119,7 +125,8 @@ class SakeListViewModel(
             getSakePageUseCase(
                 offset = nextOffset,
                 limit = 20,
-                filterCriteria = currentState.filterCriteria
+                filterCriteria = currentState.filterCriteria,
+                sortCriteria = currentState.sortCriteria
             )
             .onSuccess { result ->
                 _uiState.update { state ->
@@ -200,6 +207,27 @@ class SakeListViewModel(
             state.copy(
                 filterCriteria = org.sake_hack.feature.sakelist.domain.model.FilterCriteria(),
                 isFilterDialogOpen = false
+            )
+        }
+        loadInitialPage()
+    }
+
+    private fun openSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = true) }
+    }
+
+    private fun closeSortMenu() {
+        _uiState.update { it.copy(isSortMenuOpen = false) }
+    }
+
+    private fun applySort(field: org.sake_hack.feature.sakelist.domain.model.SakeSortField, ascending: Boolean) {
+        _uiState.update { state ->
+            state.copy(
+                sortCriteria = org.sake_hack.feature.sakelist.domain.model.SakeSortCriteria(
+                    field = field,
+                    ascending = ascending
+                ),
+                isSortMenuOpen = false
             )
         }
         loadInitialPage()
