@@ -247,15 +247,55 @@
                           "fontWeight": "700"
                         },
                         {
-                          "id": "9Yvj3",
-                          "type": "ref",
-                          "ref": "4oeIZ",
-                          "name": "cardType1",
-                          "descendants": {
-                            "o7CSv": {
-                              "content": "日本酒"
+                          "type": "frame",
+                          "id": "vbINA",
+                          "name": "chipRow1",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "id": "9Yvj3",
+                              "type": "ref",
+                              "ref": "4oeIZ",
+                              "name": "cardType1",
+                              "descendants": {
+                                "o7CSv": {
+                                  "content": "日本酒"
+                                }
+                              }
+                            },
+                            {
+                              "type": "frame",
+                              "id": "fn4G3",
+                              "name": "likeButton1",
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "cOaNM",
+                                  "name": "heart1",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "favorite",
+                                  "iconFontFamily": "Material Symbols Rounded",
+                                  "weight": 400,
+                                  "fill": "#E53935"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "kPSTW",
+                                  "name": "count1",
+                                  "fill": "$text-body",
+                                  "content": "12",
+                                  "fontFamily": "Noto Sans JP",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                }
+                              ]
                             }
-                          }
+                          ]
                         }
                       ]
                     }
@@ -344,15 +384,55 @@
                           "fontWeight": "700"
                         },
                         {
-                          "id": "s6VE6",
-                          "type": "ref",
-                          "ref": "MpX4j",
-                          "name": "cardType2",
-                          "descendants": {
-                            "Pbwi2": {
-                              "content": "ウイスキー"
+                          "type": "frame",
+                          "id": "X9QgV",
+                          "name": "chipRow2",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "id": "s6VE6",
+                              "type": "ref",
+                              "ref": "MpX4j",
+                              "name": "cardType2",
+                              "descendants": {
+                                "Pbwi2": {
+                                  "content": "ウイスキー"
+                                }
+                              }
+                            },
+                            {
+                              "type": "frame",
+                              "id": "UmdXY",
+                              "name": "likeButton2",
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "Yut3x",
+                                  "name": "heart2",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "favorite",
+                                  "iconFontFamily": "Material Symbols Rounded",
+                                  "weight": 400,
+                                  "fill": "#BDBDBD"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "hLOuP",
+                                  "name": "count2",
+                                  "fill": "$text-body",
+                                  "content": "3",
+                                  "fontFamily": "Noto Sans JP",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                }
+                              ]
                             }
-                          }
+                          ]
                         }
                       ]
                     }

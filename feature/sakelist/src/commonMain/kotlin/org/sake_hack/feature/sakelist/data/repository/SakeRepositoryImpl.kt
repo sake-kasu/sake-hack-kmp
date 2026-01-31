@@ -90,4 +90,18 @@ class SakeRepositoryImpl(
             limit = response.meta.limit
         )
     }
+
+    /**
+     * 酒にいいねを追加
+     */
+    override suspend fun likeSake(sakeId: Int): Result<Unit> = safeApiCall {
+        apiService.likeSake(sakeId)
+    }
+
+    /**
+     * 酒のいいねを削除
+     */
+    override suspend fun unlikeSake(sakeId: Int): Result<Unit> = safeApiCall {
+        apiService.unlikeSake(sakeId)
+    }
 }

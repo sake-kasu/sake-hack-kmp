@@ -28,4 +28,7 @@ sealed interface SakeListIntent {
     // 詳細
     data class OpenSakeDetail(val sake: Sake) : SakeListIntent
     data object CloseDetailDialog : SakeListIntent
+
+    // いいね
+    data class ToggleLike(val sakeId: Int, val isCurrentlyLiked: Boolean) : SakeListIntent
 }

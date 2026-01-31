@@ -13,6 +13,7 @@ import org.sake_hack.feature.sakelist.data.repository.SakeRepositoryImpl
 import org.sake_hack.feature.sakelist.domain.repository.SakeRepository
 import org.sake_hack.feature.sakelist.domain.usecase.GetSakeListUseCase
 import org.sake_hack.feature.sakelist.domain.usecase.GetSakePageUseCase
+import org.sake_hack.feature.sakelist.domain.usecase.ToggleSakeLikeUseCase
 import org.sake_hack.feature.sakelist.presentation.SakeListViewModel
 import org.sake_hack.feature.stocklist.data.remote.StockApiService
 import org.sake_hack.feature.stocklist.data.repository.StockRepositoryImpl
@@ -26,13 +27,14 @@ import org.sake_hack.ui.drawer.DrawerViewModel
  */
 val commonModule = module {
     // ViewModels
-    viewModel { SakeListViewModel(get()) }
+    viewModel { SakeListViewModel(get(), get()) }
     viewModel { StockListViewModel(get(), get(), get(), get(), get()) }
     viewModel { DrawerViewModel() }
 
     // Use Cases
     factory { GetSakeListUseCase(get()) }
     factory { GetSakePageUseCase(get()) }
+    factory { ToggleSakeLikeUseCase(get()) }
     factory { GetStockPageUseCase(get()) }
     factory { GetStockByIdUseCase(get()) }
     factory { CreateStockUseCase(get()) }

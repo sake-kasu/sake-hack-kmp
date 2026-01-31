@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Liquor
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -25,6 +27,7 @@ import org.sake_hack.feature.sakelist.domain.model.Sake
 fun SakeListItem(
     sake: Sake,
     onClick: () -> Unit,
+    onLikeClick: (sakeId: Int, isCurrentlyLiked: Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -101,6 +104,45 @@ fun SakeListItem(
                     )
                 }
             }
+
+            // いいねボタン
+            LikeButton(
+                likeCount = sake.likeCount,
+                isLiked = sake.isLikedByCurrentUser,
+                onClick = { onLikeClick(sake.id, sake.isLikedByCurrentUser) }
+            )
+        }
+    }
+}
+
+@Composable
+private fun LikeButton(
+    likeCount: Int,
+    isLiked: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.clickable(onClick = onClick),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+            contentDescription = if (isLiked) "いいねを解除" else "いいねする",
+            modifier = Modifier.size(24.dp),
+            tint = if (isLiked) Color(0xFFE53935) else Color(0xFFBDBDBD)
+        )
+
+        if (likeCount > 0) {
+            Text(
+                text = likeCount.toString(),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                ),
+                color = if (isLiked) Color(0xFFE53935) else Color(0xFFBDBDBD)
+            )
         }
     }
 }
