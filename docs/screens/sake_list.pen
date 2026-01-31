@@ -19,7 +19,7 @@
           "name": "SakeList Screen",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -726,140 +726,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "frame",
-              "id": "KywDO",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "01EH9",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "TL0wo",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "o90Al",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Bizqa",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "aHxut",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "wui1w",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "ftMcp",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "FRg6z",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "LvGCP",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Xkez8",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -871,7 +737,7 @@
           "name": "SakeList Screen - Filter Dialog Open",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "none",
           "children": [
@@ -1585,148 +1451,12 @@
             },
             {
               "type": "frame",
-              "id": "WiPx4",
-              "x": 0,
-              "y": 812,
-              "name": "BottomNavigation",
-              "width": "fill_container(412)",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "PeqgK",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "s9etg",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "l1iWD",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "5v6lv",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "7nBMN",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "aHfPi",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "OV533",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "kzt8L",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "ip7jW",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Sx0XN",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "uidIE",
               "x": 0,
               "y": 0,
               "name": "Overlay",
               "width": 412,
-              "height": 892,
+              "height": 812,
               "fill": "#00000066",
               "justifyContent": "center",
               "alignItems": "center",
@@ -1896,7 +1626,7 @@
           "name": "SakeList Screen - Filtered",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -2236,140 +1966,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "frame",
-              "id": "21spt",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "wRRRM",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "psWVE",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "wSfsj",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "zozYz",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "ZZ45c",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "OZ8DG",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "rWKFU",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "IEv2N",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "VHrsq",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "UUHRo",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -2381,7 +1977,7 @@
           "name": "SakeList Screen - Sort Menu Open",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "none",
           "children": [
@@ -3095,142 +2691,6 @@
             },
             {
               "type": "frame",
-              "id": "tvTsw",
-              "x": 0,
-              "y": 812,
-              "name": "BottomNavigation",
-              "width": "fill_container(412)",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "q2BaW",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "yR2kS",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "AuoCz",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "w0UF5",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "ciw3j",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "VLCuZ",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "VGITz",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "rS8SX",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "z1iVq",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "8S92T",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "yV7ZE",
               "x": 216,
               "y": 112,
@@ -3584,7 +3044,7 @@
           "name": "SakeList Screen - Detail Dialog Open",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "none",
           "children": [
@@ -4278,148 +3738,12 @@
             },
             {
               "type": "frame",
-              "id": "NIzPo",
-              "x": 0,
-              "y": 812,
-              "name": "BottomNavigation",
-              "width": "fill_container(412)",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "7sYaP",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "fDQSx",
-                      "name": "homeIcon",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "FIIH2",
-                      "name": "homeLabel",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "iHIv1",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "8Om8t",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "SXJEp",
-                          "name": "listIcon",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "3QUSa",
-                      "name": "listLabel",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "839hk",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "9r3JS",
-                      "name": "settingsIcon",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "hLVHY",
-                      "name": "settingsLabel",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "9XS0i",
               "x": 0,
               "y": 0,
               "name": "Overlay",
               "width": 412,
-              "height": 892,
+              "height": 812,
               "fill": "#00000066",
               "layout": "vertical",
               "justifyContent": "center",
@@ -4775,7 +4099,7 @@
           "name": "SakeList Screen - Loading",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -4868,140 +4192,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "frame",
-              "id": "jeLxb",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "PeiC8",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "UIcSL",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "YXZFp",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "mgvp5",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "OBJzk",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "RUjaF",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "clGS5",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "t0rO7",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "ifYQ6",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Ec023",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -5068,7 +4258,7 @@
           "name": "SakeList Screen - Error",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -5190,7 +4380,8 @@
                           "lineHeight": 1.6,
                           "textAlign": "center",
                           "fontFamily": "Noto Sans JP",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -5204,140 +4395,6 @@
                           "content": "再試行"
                         }
                       }
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "bW4AL",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "37Zev",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "I5qQm",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "S9EAs",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "KeWYq",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "z4mRR",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "CJJMA",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "1DCLb",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "bo8lR",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "341Be",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "S8KL3",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
                     }
                   ]
                 }
@@ -5451,7 +4508,7 @@
           "name": "SakeList Screen - Pagination Error",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -6052,140 +5109,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "frame",
-              "id": "GOmzG",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "fU2eA",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "f8v9P",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "EnhBv",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "NYio5",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "c7g4U",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "hD5b6",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "ZbRHj",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "nYbPZ",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "Jm0xn",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "DQM2g",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -6295,7 +5218,7 @@
           "name": "SakeList Screen - Detail Error",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "none",
           "children": [
@@ -6989,148 +5912,12 @@
             },
             {
               "type": "frame",
-              "id": "4KNF2",
-              "x": 0,
-              "y": 812,
-              "name": "BottomNavigation",
-              "width": "fill_container(412)",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "j1i5Q",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "SdDLy",
-                      "name": "homeIcon",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "XbZWb",
-                      "name": "homeLabel",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "wN8t9",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "5aRpP",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "rXV6T",
-                          "name": "listIcon",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "XCHnt",
-                      "name": "listLabel",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "SyBG7",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "z5IXK",
-                      "name": "settingsIcon",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "mI63Y",
-                      "name": "settingsLabel",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "T1Grk",
               "x": 0,
               "y": 0,
               "name": "Overlay",
               "width": 412,
-              "height": 892,
+              "height": 812,
               "fill": "#00000066",
               "layout": "vertical",
               "justifyContent": "center",
@@ -7275,7 +6062,8 @@
                                   "content": "詳細情報を取得できませんでした",
                                   "textAlign": "center",
                                   "fontFamily": "Noto Sans JP",
-                                  "fontSize": 14
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
                                 }
                               ]
                             },
@@ -7449,7 +6237,7 @@
           "name": "SakeList Screen - Empty",
           "clip": true,
           "width": 412,
-          "height": 892,
+          "height": 812,
           "fill": "$white",
           "layout": "vertical",
           "children": [
@@ -7679,7 +6467,8 @@
                           "lineHeight": 1.6,
                           "textAlign": "center",
                           "fontFamily": "Noto Sans JP",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -7711,140 +6500,6 @@
                           "fontWeight": "700"
                         }
                       ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "AiVOX",
-              "name": "BottomNavigation",
-              "width": "fill_container",
-              "height": 80,
-              "fill": "$white",
-              "stroke": {
-                "align": "inside",
-                "thickness": {
-                  "top": 1
-                },
-                "fill": "$border-divider"
-              },
-              "justifyContent": "space_around",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "4wan1",
-                  "name": "NavItem-Home",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "vtqyC",
-                      "name": "navIcon1",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "home",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "WNtaT",
-                      "name": "navLabel1",
-                      "fill": "$text-description",
-                      "content": "ホーム",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "ffuQM",
-                  "name": "NavItem-List",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "THztR",
-                      "name": "indicator",
-                      "width": 64,
-                      "height": 32,
-                      "fill": "$sea-100",
-                      "cornerRadius": 16,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "EqLEg",
-                          "name": "navIcon2",
-                          "width": 24,
-                          "height": 24,
-                          "iconFontName": "local_bar",
-                          "iconFontFamily": "Material Symbols Rounded",
-                          "weight": 600,
-                          "fill": "$button-normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "iCHzx",
-                      "name": "navLabel2",
-                      "fill": "$button-normal",
-                      "content": "一覧",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "5MeAt",
-                  "name": "NavItem-Settings",
-                  "width": 64,
-                  "height": 56,
-                  "layout": "vertical",
-                  "gap": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "OLjts",
-                      "name": "navIcon3",
-                      "width": 24,
-                      "height": 24,
-                      "iconFontName": "settings",
-                      "iconFontFamily": "Material Symbols Rounded",
-                      "weight": 400,
-                      "fill": "$text-description"
-                    },
-                    {
-                      "type": "text",
-                      "id": "YH7Q4",
-                      "name": "navLabel3",
-                      "fill": "$text-description",
-                      "content": "設定",
-                      "fontFamily": "Noto Sans JP",
-                      "fontSize": 12,
-                      "fontWeight": "500"
                     }
                   ]
                 }
