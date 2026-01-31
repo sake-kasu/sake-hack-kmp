@@ -64,6 +64,7 @@ targets:
           COPY_PHASE_STRIP: NO
     sources:
       - path: iosApp
+      - path: Makefile
     preBuildScripts:
       - name: "Compile Kotlin Framework"
         script: |

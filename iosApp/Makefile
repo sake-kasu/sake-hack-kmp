@@ -20,7 +20,7 @@ help:
 
 xcodegen:
 	@echo "Generating Xcode project..."
-	xcodegen -s iosApp/project.yml
+	xcodegen -s project.yml
 
 build:
 	@echo "Building iOS app for $(DEVICE_ID)..."
