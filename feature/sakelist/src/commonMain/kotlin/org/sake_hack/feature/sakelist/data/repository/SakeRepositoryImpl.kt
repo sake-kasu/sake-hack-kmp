@@ -6,6 +6,7 @@ import org.sake_hack.feature.sakelist.data.remote.SakeApiService
 import org.sake_hack.feature.sakelist.domain.model.FilterCriteria
 import org.sake_hack.feature.sakelist.domain.model.Sake
 import org.sake_hack.feature.sakelist.domain.model.SakePageResult
+import org.sake_hack.feature.sakelist.domain.model.SakeSortCriteria
 import org.sake_hack.feature.sakelist.domain.repository.SakeRepository
 
 /**
@@ -61,19 +62,25 @@ class SakeRepositoryImpl(
 
     /**
      * ページネーション対応の酒一覧取得
-     * フィルター条件をAPIに渡してサーバー側で処理
+     * フィルター条件・ソート条件をAPIに渡してサーバー側で処理
      */
     override suspend fun getSakePage(
         offset: Int,
         limit: Int,
-        filterCriteria: FilterCriteria?
+        filterCriteria: FilterCriteria?,
+        sortCriteria: SakeSortCriteria?
     ): Result<SakePageResult> = safeApiCall {
+        val sortBy = sortCriteria?.field?.name?.lowercase()
+        val order = if (sortCriteria?.ascending == true) "asc" else "desc"
+
         val response = apiService.fetchSakePage(
             offset = offset,
             limit = limit,
             sakeName = filterCriteria?.sakeName,
             sakeTypes = filterCriteria?.sakeTypes,
-            region = filterCriteria?.region
+            region = filterCriteria?.region,
+            sortBy = sortBy,
+            order = order
         )
 
         SakePageResult(
