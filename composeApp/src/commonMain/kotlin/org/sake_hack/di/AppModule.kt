@@ -19,6 +19,7 @@ import org.sake_hack.feature.stocklist.data.repository.StockRepositoryImpl
 import org.sake_hack.feature.stocklist.domain.repository.StockRepository
 import org.sake_hack.feature.stocklist.domain.usecase.*
 import org.sake_hack.feature.stocklist.presentation.StockListViewModel
+import org.sake_hack.ui.drawer.DrawerViewModel
 
 /**
  * 全プラットフォーム共通のKoinモジュール
@@ -27,6 +28,7 @@ val commonModule = module {
     // ViewModels
     viewModel { SakeListViewModel(get()) }
     viewModel { StockListViewModel(get(), get(), get(), get(), get()) }
+    viewModel { DrawerViewModel() }
 
     // Use Cases
     factory { GetSakeListUseCase(get()) }
