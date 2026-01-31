@@ -11,8 +11,7 @@ captures
 .externalNativeBuild
 .cxx
 # XcodeGenで生成されるiosApp.xcodeproj
-iosApp/iosApp.xcodeproj/*
-!iosApp/iosApp.xcodeproj/project.pbxproj
+iosApp/iosApp.xcodeproj/
 
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
