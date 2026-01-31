@@ -22,6 +22,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -216,14 +217,16 @@ private fun StockList(
 
     LazyColumn(
         state = listState,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFF8F8FB)), // デザイン仕様: $sumi-50
         contentPadding = PaddingValues(
             top = 12.dp,
             start = 16.dp,
             end = 16.dp,
             bottom = 16.dp
         ),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = modifier.fillMaxSize()
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         // 在庫リスト
         items(
