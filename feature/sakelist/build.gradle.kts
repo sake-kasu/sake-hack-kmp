@@ -16,14 +16,17 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "SakeListFeature"
             isStatic = true
+            export(projects.core.common)
+            export(projects.core.network)
+            export(projects.core.database)
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core.common)
-            implementation(projects.core.network)
-            implementation(projects.core.database)
+            api(projects.core.common)
+            api(projects.core.network)
+            api(projects.core.database)
 
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)

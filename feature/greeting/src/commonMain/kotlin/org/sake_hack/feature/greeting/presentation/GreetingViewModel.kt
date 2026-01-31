@@ -6,11 +6,15 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.sake_hack.feature.greeting.domain.usecase.GetPlatformInfoUseCase
+import kotlin.experimental.ExperimentalObjCName
+import kotlin.native.ObjCName
 
 /**
  * ViewModel for Greeting feature following MVI pattern.
  * Manages UI state and business logic invocation.
  */
+@OptIn(ExperimentalObjCName::class)
+@ObjCName("GreetingViewModel")
 class GreetingViewModel(
     private val getPlatformInfoUseCase: GetPlatformInfoUseCase = GetPlatformInfoUseCase()
 ) : ViewModel() {

@@ -19,12 +19,13 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Greeting"
             isStatic = true
+            export(projects.core.common)
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core.common)
+            api(projects.core.common)  // api に変更してエクスポート
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
