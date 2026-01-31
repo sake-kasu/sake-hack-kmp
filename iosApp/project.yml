@@ -1,0 +1,99 @@
+name: iosApp
+options:
+  bundleIdPrefix: org.sakehack
+  deploymentTarget:
+    iOS: "18.2"
+  developmentLanguage: en
+  createIntermediateGroups: true
+
+settings:
+  base: Configuration/Config.xcconfig
+  config:
+    Debug:
+      DEVELOPMENT_TEAM: "${TEAM_ID}"
+    Release:
+      DEVELOPMENT_TEAM: "${TEAM_ID}"
+
+targets:
+  iosApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.2"
+    settings:
+      base:
+        PRODUCT_NAME: Sakehackkmp
+        PRODUCT_BUNDLE_IDENTIFIER: org.sakehack.Sakehackkmp$(TEAM_ID)
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: "1.0"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Development"
+        ENABLE_PREVIEWS: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        DEVELOPMENT_ASSET_PATHS: '"iosApp/Preview Content"'
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/Frameworks"
+        SWIFT_EMIT_LOC_STRINGS: YES
+        FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]: $(inherited) $(SRCROOT)/../feature/greeting/build/bin/iosSimulatorArm64/debugFramework
+        FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]: $(inherited) $(SRCROOT)/../feature/greeting/build/bin/iosArm64/debugFramework
+        OTHER_LDFLAGS: $(inherited) -framework Greeting
+      config:
+        Debug:
+          ENABLE_TESTABILITY: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG $(inherited)"
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          ONLY_ACTIVE_ARCH: YES
+          DEBUG_INFORMATION_FORMAT: dwarf
+          MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+          GCC_OPTIMIZATION_LEVEL: 0
+          GCC_PREPROCESSOR_DEFINITIONS:
+            - "DEBUG=1"
+            - "$(inherited)"
+        Release:
+          SWIFT_COMPILATION_MODE: wholemodule
+          DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
+          MTL_ENABLE_DEBUG_INFO: NO
+          VALIDATE_PRODUCT: YES
+          ENABLE_NS_ASSERTIONS: NO
+          COPY_PHASE_STRIP: NO
+    sources:
+      - path: iosApp
+    preBuildScripts:
+      - name: "Compile Kotlin Framework"
+        script: |
+          cd "$SRCROOT/.."
+          ./gradlew :feature:greeting:embedAndSignAppleFrameworkForXcode
+        inputFiles: []
+        outputFiles:
+          - "$(SRCROOT)/../feature/greeting/build/bin/$(PLATFORM_NAME)/$(CONFIGURATION)Framework/Greeting.framework"
+
+  iosAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.2"
+    sources:
+      - path: iosAppTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.sakehack.iosAppTests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+    dependencies:
+      - target: iosApp
+
+schemes:
+  iosApp:
+    build:
+      targets:
+        iosApp: all
+    test:
+      targets:
+        - iosAppTests
+      config: Debug

@@ -31,8 +31,26 @@ in your IDE’s toolbar or build it directly from the terminal:
 
 ### Build and Run iOS Application
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+このプロジェクトでは、iOSプロジェクトファイルの生成に [XcodeGen](https://github.com/yonaskolb/XcodeGen) を使用しています。
+
+#### 初回セットアップ
+
+1. XcodeGen をインストール（Homebrew経由）:
+   ```shell
+   brew install xcodegen
+   ```
+
+2. iOSプロジェクトを生成:
+   ```shell
+   xcodegen -s iosApp/project.yml
+   ```
+
+#### 開発フロー
+
+- Xcodeで開発する場合: `[/iosApp](./iosApp)` ディレクトリをXcodeで開いて実行
+- 新しいファイルを追加した場合: プロジェクトルートで `xcodegen -s iosApp/project.yml` を再実行
+
+**注意**: `iosApp.xcodeproj` はXcodeGenで自動生成されるため、手動で編集しないでください。設定を変更する場合は `project.yml` を編集してから再生成してください。
 
 ---
 

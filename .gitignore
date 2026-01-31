@@ -10,6 +10,9 @@ local.properties
 captures
 .externalNativeBuild
 .cxx
+# XcodeGenで生成されるiosApp.xcodeproj
+iosApp/iosApp.xcodeproj/
+
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
