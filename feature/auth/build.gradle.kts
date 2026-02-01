@@ -39,7 +39,7 @@ kotlin {
         }
 
         androidMain.dependencies {
-            // Android-specific dependencies if needed
+            implementation(libs.datastore.preferences)
         }
 
         iosMain.dependencies {

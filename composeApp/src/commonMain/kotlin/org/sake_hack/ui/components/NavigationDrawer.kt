@@ -3,8 +3,10 @@ package org.sake_hack.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,10 +15,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.LocalBar
+import androidx.compose.material.icons.rounded.Logout
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.sake_hack.domain.model.NavDestination
 import org.sake_hack.domain.model.NavigationPermission
+import org.sake_hack.feature.auth.domain.model.User
 import org.sake_hack.navigation.NavDestinations
 import org.sake_hack.ui.drawer.DrawerIntent
 import org.sake_hack.ui.drawer.DrawerUiState
@@ -41,15 +46,19 @@ import org.sake_hack.ui.drawer.DrawerUiState
  * デザイン仕様: docs/screens/common.pen (ID: 3fAbU)
  *
  * @param uiState ドロワーのUI状態
+ * @param currentUser 現在のユーザー情報
  * @param onIntent Intentハンドラー
  * @param onNavigate ナビゲーションハンドラー
+ * @param onLogout ログアウトハンドラー
  * @param modifier Modifier
  */
 @Composable
 fun NavigationDrawer(
     uiState: DrawerUiState,
+    currentUser: User?,
     onIntent: (DrawerIntent) -> Unit,
     onNavigate: (String) -> Unit,
+    onLogout: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     // デザイン仕様: width=300dp, backgroundColor=$white, shadow
@@ -65,7 +74,7 @@ fun NavigationDrawer(
             .windowInsetsPadding(WindowInsets.statusBars) // ステータスバー領域を回避
     ) {
         // ヘッダー
-        DrawerHeader()
+        DrawerHeader(currentUser = currentUser)
 
         // メニューセクション
         MenuSection(
@@ -76,6 +85,13 @@ fun NavigationDrawer(
                 onNavigate(destination)
             }
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        // ログアウトセクション（ログイン時のみ表示）
+        if (currentUser != null) {
+            LogoutSection(onLogout = onLogout)
+        }
     }
 }
 
@@ -83,9 +99,12 @@ fun NavigationDrawer(
  * ドロワーヘッダーコンポーネント
  *
  * デザイン仕様: docs/screens/common.pen (ID: CK6oC)
+ * + login_logout.pen (userInfo section)
+ *
+ * @param currentUser 現在のユーザー情報
  */
 @Composable
-private fun DrawerHeader() {
+private fun DrawerHeader(currentUser: User?) {
     // デザイン仕様: padding=[24, 16], gap=4dp, border-bottom
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -103,6 +122,41 @@ private fun DrawerHeader() {
                 fontFamily = FontFamily.Default, // TODO: Noto Sans JP
                 color = Color(0xFF1A1A1A) // $text-body
             )
+
+            // ユーザー情報（ログイン時のみ表示）
+            currentUser?.let { user ->
+                // デザイン仕様: gap=8dp, alignItems=center
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // miniAvatar: 24×24dp, #4285F4, cornerRadius=12dp
+                    Box(
+                        modifier = Modifier
+                            .size(24.dp)
+                            .background(
+                                color = Color(0xFF4285F4),
+                                shape = CircleShape
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = user.email?.firstOrNull()?.uppercase() ?: "U",
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color.White
+                        )
+                    }
+
+                    // userEmail: fontSize=12sp, fill=$text-description
+                    Text(
+                        text = user.email ?: "ゲストユーザー",
+                        fontSize = 12.sp,
+                        color = Color(0xFF6B6B6B) // $text-description
+                    )
+                }
+            }
         }
         // border-bottom
         androidx.compose.material3.HorizontalDivider(
@@ -213,5 +267,68 @@ private fun DrawerMenuItem(
             fontFamily = FontFamily.Default, // TODO: Noto Sans JP
             color = if (isSelected) Color(0xFF1976D2) else Color(0xFF1A1A1A) // $button-normal / $text-body
         )
+    }
+}
+
+/**
+ * ログアウトセクションコンポーネント
+ *
+ * デザイン仕様: docs/screens/login_logout.pen (LogoutSection)
+ * - stroke top: 1dp, padding: 8dp
+ * - logoutBtn: gap=12dp, padding=[12, 16]
+ * - logoutIcon: fill=$sun-800
+ * - "ログアウト": fontSize=14sp
+ *
+ * @param onLogout ログアウトハンドラー
+ */
+@Composable
+private fun LogoutSection(onLogout: () -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        // border-top
+        androidx.compose.material3.HorizontalDivider(
+            modifier = Modifier.fillMaxWidth(),
+            thickness = 1.dp,
+            color = Color(0xFFE0E0E0) // $border-divider
+        )
+
+        // デザイン仕様: padding=8dp
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            // logoutBtn: gap=12dp, padding=[12, 16]
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onLogout)
+                    .background(
+                        color = Color.Transparent,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(vertical = 12.dp, horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // logoutIcon: fill=$sun-800
+                Icon(
+                    imageVector = Icons.Rounded.Logout,
+                    contentDescription = "Logout",
+                    modifier = Modifier.size(24.dp),
+                    tint = Color(0xFFD84315) // $sun-800
+                )
+
+                // "ログアウト": fontSize=14sp
+                Text(
+                    text = "ログアウト",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.Default, // TODO: Noto Sans JP
+                    color = Color(0xFFD84315) // $sun-800
+                )
+            }
+        }
     }
 }

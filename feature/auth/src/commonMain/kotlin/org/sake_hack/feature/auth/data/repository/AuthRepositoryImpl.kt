@@ -4,7 +4,7 @@ import dev.gitlive.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
-import org.sake_hack.domain.model.UserRole
+import org.sake_hack.core.common.domain.model.UserRole
 import org.sake_hack.feature.auth.data.TokenManager
 import org.sake_hack.feature.auth.domain.model.User
 import org.sake_hack.feature.auth.domain.repository.AuthRepository
@@ -26,7 +26,7 @@ class AuthRepositoryImpl(
 
             val firebaseUser = firebaseAuth.currentUser ?: error("User is null")
 
-            val idToken = firebaseUser.getIdToken(false)
+            val idToken = firebaseUser.getIdToken(false) ?: ""
             tokenManager.saveToken(idToken)
 
             // TODO: バックエンドAPIからロール取得
@@ -34,7 +34,7 @@ class AuthRepositoryImpl(
                 uid = firebaseUser.uid,
                 email = firebaseUser.email,
                 displayName = firebaseUser.displayName,
-                photoUrl = firebaseUser.photoUrl,
+                photoUrl = firebaseUser.photoURL,
                 role = UserRole.User
             )
         }
@@ -70,7 +70,7 @@ class AuthRepositoryImpl(
                     uid = firebaseUser.uid,
                     email = firebaseUser.email,
                     displayName = firebaseUser.displayName,
-                    photoUrl = firebaseUser.photoUrl,
+                    photoUrl = firebaseUser.photoURL,
                     role = UserRole.User
                 )
             }

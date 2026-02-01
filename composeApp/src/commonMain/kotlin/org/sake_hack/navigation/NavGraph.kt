@@ -48,6 +48,7 @@ fun SakeAppNavGraph(
         drawerContent = {
             NavigationDrawer(
                 uiState = drawerUiState,
+                currentUser = null, // TODO: Phase 7で現在のユーザー情報を取得
                 onIntent = drawerViewModel::handleIntent,
                 onNavigate = { destination ->
                     navController.navigate(destination) {
@@ -58,7 +59,8 @@ fun SakeAppNavGraph(
                         restoreState = true
                     }
                     scope.launch { drawerState.close() }
-                }
+                },
+                onLogout = {} // TODO: Phase 7でログアウト処理を実装
             )
         }
     ) {

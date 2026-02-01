@@ -30,6 +30,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // Feature modules
+            implementation(projects.feature.auth)
             implementation(projects.feature.greeting)
             implementation(projects.feature.sakelist)
             implementation(projects.feature.stocklist)
