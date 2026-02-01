@@ -153,10 +153,6 @@ struct SakeListView: View {
     private var customTopAppBar: some View {
         VStack(spacing: 0) {
             HStack(spacing: 16) {
-                Image(systemName: "line.horizontal.3")
-                    .font(.system(size: 24))
-                    .foregroundStyle(.primary)
-
                 Text("酒一覧")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(.primary)
