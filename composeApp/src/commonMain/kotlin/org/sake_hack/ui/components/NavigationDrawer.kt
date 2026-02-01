@@ -18,9 +18,9 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.LocalBar
-import androidx.compose.material.icons.rounded.Logout
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -314,7 +314,7 @@ private fun LogoutSection(onLogout: () -> Unit) {
             ) {
                 // logoutIcon: fill=$sun-800
                 Icon(
-                    imageVector = Icons.Rounded.Logout,
+                    imageVector = Icons.AutoMirrored.Rounded.Logout,
                     contentDescription = "Logout",
                     modifier = Modifier.size(24.dp),
                     tint = Color(0xFFD84315) // $sun-800

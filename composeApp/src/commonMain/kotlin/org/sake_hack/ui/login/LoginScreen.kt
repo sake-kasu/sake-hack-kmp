@@ -63,7 +63,7 @@ fun LoginScreen(
     // エラー表示
     LaunchedEffect(uiState.error) {
         uiState.error?.let { error ->
-            snackbarHostState.showSnackbar(error.message ?: "エラーが発生しました")
+            snackbarHostState.showSnackbar(error.message)
             viewModel.handleIntent(LoginIntent.ClearError)
         }
     }
