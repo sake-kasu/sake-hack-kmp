@@ -53,6 +53,9 @@ kotlin {
 
             // Ktor (HttpClient型参照のため)
             implementation(libs.ktor.client.core)
+
+            // Firebase Auth
+            implementation(libs.firebase.auth)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
