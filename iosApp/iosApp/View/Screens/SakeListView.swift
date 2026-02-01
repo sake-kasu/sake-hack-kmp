@@ -13,16 +13,20 @@ struct SakeListView: View {
 
     var body: some View {
         NavigationStack {
-            content
-                .navigationTitle("酒一覧")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        filterButton
-                    }
-                }
-                .refreshable {
-                    await model.refresh()
-                }
+            VStack(spacing: 0) {
+                // カスタムTopAppBar - デザイン仕様: height 64pt, padding [0,16], gap 16pt
+                customTopAppBar
+
+                // ActionBar - デザイン仕様: gap 12pt, padding [8,12]
+                actionBar
+
+                // メインコンテンツ
+                content
+            }
+            .navigationBarHidden(true)
+            .refreshable {
+                await model.refresh()
+            }
                 .sheet(isPresented: $model.state.isFilterDialogOpen) {
                     FilterSheet(model: model)
                 }
@@ -42,6 +46,9 @@ struct SakeListView: View {
                         message: Text(error.localizedDescription),
                         dismissButton: .default(Text("OK"), action: model.clearError)
                     )
+                }
+                .sheet(isPresented: $model.state.isSortMenuOpen) {
+                    SortSheet(model: model)
                 }
         }
     }
@@ -83,22 +90,29 @@ struct SakeListView: View {
 
     // MARK: - Sake List
 
+    /// 酒一覧
+    /// デザイン仕様: 背景色 $sumi-50 (#F8F8FB), padding [12,16,16,16], gap 12pt
     private var sakeList: some View {
-        List {
-            ForEach(model.state.sakes) { sake in
-                SakeRowView(sake: sake)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        model.openSakeDetail(sake)
-                    }
-            }
+        ScrollView {
+            LazyVStack(spacing: 12) {
+                ForEach(model.state.sakes) { sake in
+                    SakeRowView(sake: sake)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            model.openSakeDetail(sake)
+                        }
+                }
 
-            // ページネーション
-            if model.state.hasNextPage {
-                loadMoreRow
+                // ページネーション
+                if model.state.hasNextPage {
+                    loadMoreRow
+                }
             }
+            .padding(.top, 12)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
         }
-        .listStyle(.plain)
+        .background(Color(red: 0.97, green: 0.97, blue: 0.98))
         .overlay(alignment: .bottomTrailing) {
             addButton
         }
@@ -124,14 +138,86 @@ struct SakeListView: View {
         }
     }
 
-    // MARK: - Filter Button
+    // MARK: - Custom TopAppBar
 
-    private var filterButton: some View {
-        Button {
-            model.openFilterDialog()
-        } label: {
-            Image(systemName: model.state.filterCriteria.isActive ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+    /// カスタムTopAppBar
+    /// デザイン仕様: height 64pt, padding [0,16], gap 16pt, 下線 thickness 1
+    private var customTopAppBar: some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 16) {
+                Image(systemName: "line.horizontal.3")
+                    .font(.system(size: 24))
+                    .foregroundStyle(.primary)
+
+                Text("酒一覧")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .frame(height: 64)
+            .background(Color(UIColor.systemBackground))
+
+            Divider()
+                .frame(height: 1)
         }
+    }
+
+    // MARK: - ActionBar
+
+    /// ActionBar - フィルター・並べ替えボタン
+    /// デザイン仕様: gap 12pt, padding [8,12], cornerRadius 8pt
+    private var actionBar: some View {
+        HStack(spacing: 12) {
+            // フィルターボタン
+            Button {
+                model.openFilterDialog()
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                        .font(.system(size: 20))
+                    Text("フィルター")
+                        .font(.system(size: 14, weight: .medium))
+
+                    if model.state.filterCriteria.isActive {
+                        Text("(\(model.state.filterCriteria.activeCount))")
+                            .font(.system(size: 14, weight: .medium))
+                    }
+                }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
+                .foregroundStyle(.primary)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color(UIColor.separator), lineWidth: 1)
+                )
+            }
+
+            // 並べ替えボタン
+            Button {
+                model.toggleSortMenu()
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "arrow.up.arrow.down")
+                        .font(.system(size: 20))
+                    Text("並べ替え")
+                        .font(.system(size: 14, weight: .medium))
+                }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
+                .foregroundStyle(.primary)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color(UIColor.separator), lineWidth: 1)
+                )
+            }
+
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(Color(UIColor.systemBackground))
     }
 
     // MARK: - Add Button
@@ -156,49 +242,57 @@ struct SakeListView: View {
 
 // MARK: - SakeRowView
 
-/// 酒一覧の行
+/// 酒カード
+/// デザイン仕様: cornerRadius 12pt, padding 12pt, gap 12pt, shadow blur 8 offset(0,2)
 struct SakeRowView: View {
     let sake: Sake
 
     var body: some View {
         HStack(spacing: 12) {
-            // サムネイル
+            // サムネイル - デザイン仕様: 64x64pt, cornerRadius 8pt
             sakeImage
 
-            // 情報
-            VStack(alignment: .leading, spacing: 4) {
+            // 情報 - デザイン仕様: gap 6pt
+            VStack(alignment: .leading, spacing: 6) {
+                // タイトル - デザイン仕様: fontSize 16, fontWeight 700, lineHeight 1.4
                 Text(sake.name)
-                    .font(.headline)
-                    .lineLimit(1)
+                    .font(.system(size: 16, weight: .bold))
+                    .lineLimit(2)
 
-                Text(sake.type)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                // TypeChip + 蔵元名
+                HStack(spacing: 8) {
+                    // TypeChip - デザイン仕様: cornerRadius 4pt, padding [4,12], fontSize 12
+                    Text(sake.type)
+                        .font(.system(size: 12))
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 12)
+                        .background(Color(UIColor.systemGray5))
+                        .cornerRadius(4)
 
-                HStack {
                     Text(sake.brewery)
-                    Text("・")
-                    Text(sake.prefecture)
+                        .font(.system(size: 12))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
-                .font(.caption)
-                .foregroundStyle(.tertiary)
 
+                // 評価
                 if let rating = sake.rating {
                     HStack(spacing: 2) {
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow)
+                            .font(.system(size: 12))
                         Text(String(format: "%.1f", rating))
+                            .font(.system(size: 12))
                     }
-                    .font(.caption)
                 }
             }
 
             Spacer()
-
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.tertiary)
         }
-        .padding(.vertical, 8)
+        .padding(12)
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 
     private var sakeImage: some View {
@@ -215,7 +309,7 @@ struct SakeRowView: View {
                 placeholderImage
             }
         }
-        .frame(width: 60, height: 80)
+        .frame(width: 64, height: 64)
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
@@ -286,6 +380,53 @@ struct FilterSheet: View {
             }
         }
         .presentationDetents([.medium, .large])
+    }
+}
+
+// MARK: - SortSheet
+
+/// 並べ替えシート
+struct SortSheet: View {
+    @Bindable var model: SakeListModel
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(SortOption.allCases, id: \.self) { option in
+                    sortOptionRow(option: option)
+                }
+            }
+            .navigationTitle("並べ替え")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("キャンセル") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+
+    private func sortOptionRow(option: SortOption) -> some View {
+        Button {
+            model.applySort(option)
+        } label: {
+            HStack {
+                Text(option.rawValue)
+                    .foregroundStyle(.primary)
+
+                Spacer()
+
+                if model.state.sortOption == option {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(.blue)
+                        .fontWeight(.semibold)
+                }
+            }
+        }
     }
 }
 

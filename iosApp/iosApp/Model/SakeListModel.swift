@@ -34,6 +34,24 @@ struct FilterCriteria: Equatable {
     var isActive: Bool {
         !(sakeName?.isEmpty ?? true) || !sakeTypes.isEmpty || !(region?.isEmpty ?? true)
     }
+
+    var activeCount: Int {
+        var count = 0
+        if !(sakeName?.isEmpty ?? true) { count += 1 }
+        count += sakeTypes.count
+        if !(region?.isEmpty ?? true) { count += 1 }
+        return count
+    }
+}
+
+// MARK: - Sort Criteria
+
+/// 並べ替え条件
+enum SortOption: String, CaseIterable {
+    case nameAsc = "酒名 (昇順)"
+    case nameDesc = "酒名 (降順)"
+    case ratingDesc = "評価 (高い順)"
+    case ratingAsc = "評価 (低い順)"
 }
 
 // MARK: - SakeList State
@@ -50,6 +68,8 @@ struct SakeListState: Equatable {
     var selectedSake: Sake? = nil
     var isDetailSheetOpen: Bool = false
     var isRegistrationSheetOpen: Bool = false
+    var isSortMenuOpen: Bool = false
+    var sortOption: SortOption = .nameAsc
 
     var hasNextPage: Bool {
         currentOffset + sakes.count < totalCount
@@ -210,6 +230,31 @@ final class SakeListModel {
     /// 地域フィルターを更新
     func updateRegionFilter(_ region: String?) {
         state.filterCriteria.region = region
+    }
+
+    // MARK: - Sort Actions
+
+    /// 並べ替えメニューをトグル
+    func toggleSortMenu() {
+        state.isSortMenuOpen.toggle()
+    }
+
+    /// 並べ替えを適用
+    func applySort(_ option: SortOption) {
+        state.sortOption = option
+        state.isSortMenuOpen = false
+
+        // ソート処理
+        switch option {
+        case .nameAsc:
+            state.sakes.sort { $0.name < $1.name }
+        case .nameDesc:
+            state.sakes.sort { $0.name > $1.name }
+        case .ratingDesc:
+            state.sakes.sort { ($0.rating ?? 0) > ($1.rating ?? 0) }
+        case .ratingAsc:
+            state.sakes.sort { ($0.rating ?? 0) < ($1.rating ?? 0) }
+        }
     }
 
     // MARK: - Sample Data
