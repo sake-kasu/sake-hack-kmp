@@ -26,6 +26,15 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
+            implementation(libs.koin.core)
+        }
+
+        androidMain.dependencies {
+            // Android-specific dependencies
+        }
+
+        iosMain.dependencies {
+            // iOS-specific dependencies
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -22,12 +22,13 @@ import org.sake_hack.feature.sakelist.domain.model.SortOption
 @Composable
 fun SakeListTopBar(
     filterCount: Int,
-    sortOption: SortOption,
-    isSortMenuOpen: Boolean,
     onFilterClick: () -> Unit,
-    onSortClick: () -> Unit,
-    onSortSelect: (SortOption) -> Unit,
-    onDismissSortMenu: () -> Unit,
+    sortOption: SortOption = SortOption.NEWEST,
+    isSortMenuOpen: Boolean = false,
+    onSortClick: () -> Unit = {},
+    onSortSelect: (SortOption) -> Unit = {},
+    onDismissSortMenu: () -> Unit = {},
+    onRegistrationClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
@@ -35,6 +36,35 @@ fun SakeListTopBar(
             // TopAppBar - タイトルのみ
             TopAppBar(
                 title = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Menu,
+                            contentDescription = "メニュー",
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Text(
+                            text = "酒一覧",
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        )
+                    }
+                },
+                actions = {
+                    if (onRegistrationClick != null) {
+                        IconButton(onClick = onRegistrationClick) {
+                            Icon(
+                                imageVector = Icons.Rounded.Add,
+                                contentDescription = "酒を登録"
+                            )
+                        }
+                    }
+                }
+            )
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(16.dp)

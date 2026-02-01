@@ -66,25 +66,10 @@ private fun SakeListContent(
 ) {
     Scaffold(
         topBar = {
-            Column {
-                CommonAppBar(
-                    title = "酒一覧",
-                    onMenuClick = onMenuClick
-                )
-                // ActionBar - フィルター・ソートボタン
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                ) {
-                    SakeActionBar(
-                        filterCriteria = uiState.filterCriteria,
-                        sortCriteria = uiState.sortCriteria,
-                        onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) },
-                        onSortClick = { onIntent(SakeListIntent.OpenSortMenu) }
-                    )
-                }
-            }
+            SakeListTopBar(
+                filterCount = uiState.filterCriteria.activeFilterCount(),
+                onFilterClick = { onIntent(SakeListIntent.OpenFilterDialog) }
+            )
         },
         modifier = modifier
     ) { paddingValues ->

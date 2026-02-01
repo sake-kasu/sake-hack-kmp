@@ -2,7 +2,7 @@
 
 # Fixed device: iPhone 17 Pro
 DEVICE_ID = 60958EAE-9046-4FDC-8F1E-D9059E25486A
-BUNDLE_ID = org.sakehack.Sakehackkmp
+BUNDLE_ID = org.sakehack.SakehackkmpES9J8E6HFH
 SCHEME = iosApp
 PROJECT = iosApp.xcodeproj
 APP_NAME = Sakehackkmp
