@@ -31,6 +31,11 @@ struct SakeListView: View {
                         SakeDetailSheet(sake: sake, onDismiss: model.closeSakeDetail)
                     }
                 }
+                .sheet(isPresented: $model.state.isRegistrationSheetOpen) {
+                    SakeRegistrationView { registered in
+                        model.closeRegistrationView()
+                    }
+                }
                 .alert(item: $model.error) { error in
                     Alert(
                         title: Text("エラー"),
@@ -94,6 +99,9 @@ struct SakeListView: View {
             }
         }
         .listStyle(.plain)
+        .overlay(alignment: .bottomTrailing) {
+            addButton
+        }
     }
 
     // MARK: - Load More Row
@@ -124,6 +132,25 @@ struct SakeListView: View {
         } label: {
             Image(systemName: model.state.filterCriteria.isActive ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
         }
+    }
+
+    // MARK: - Add Button
+
+    private var addButton: some View {
+        Button {
+            model.openRegistrationView()
+        } label: {
+            Image(systemName: "plus")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+                .frame(width: 56, height: 56)
+                .background(Color.blue)
+                .clipShape(Circle())
+                .shadow(radius: 4)
+        }
+        .padding(.trailing, 16)
+        .padding(.bottom, 16)
     }
 }
 

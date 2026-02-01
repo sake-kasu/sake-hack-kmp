@@ -49,6 +49,7 @@ struct SakeListState: Equatable {
     var isFilterDialogOpen: Bool = false
     var selectedSake: Sake? = nil
     var isDetailSheetOpen: Bool = false
+    var isRegistrationSheetOpen: Bool = false
 
     var hasNextPage: Bool {
         currentOffset + sakes.count < totalCount
@@ -173,6 +174,16 @@ final class SakeListModel {
         // viewModel.handleIntent(SakeListIntent.CloseDetailDialog())
         state.selectedSake = nil
         state.isDetailSheetOpen = false
+    }
+
+    /// 登録画面を開く
+    func openRegistrationView() {
+        state.isRegistrationSheetOpen = true
+    }
+
+    /// 登録画面を閉じる
+    func closeRegistrationView() {
+        state.isRegistrationSheetOpen = false
     }
 
     /// エラーをクリア
