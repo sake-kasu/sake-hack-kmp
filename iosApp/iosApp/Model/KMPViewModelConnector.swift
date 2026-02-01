@@ -1,8 +1,6 @@
 import Foundation
 import SwiftUI
-
-// Bridging Header 経由で KMP フレームワークをインポート
-// Greeting.framework/Headers/Greeting.h が自動的にインポートされる
+import Greeting
 
 // MARK: - KMP Container
 

@@ -43,7 +43,6 @@ targets:
         FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]: $(inherited) $(SRCROOT)/../feature/greeting/build/bin/iosSimulatorArm64/debugFramework
         FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]: $(inherited) $(SRCROOT)/../feature/greeting/build/bin/iosArm64/debugFramework
         OTHER_LDFLAGS: $(inherited) -framework Greeting
-        SWIFT_OBJC_BRIDGING_HEADER: iosApp/BridgingHeader.h
       config:
         Debug:
           ENABLE_TESTABILITY: YES
