@@ -55,4 +55,22 @@ class SakeApiService(
     suspend fun fetchSakeById(id: Int): SakeDto {
         return httpClient.get("$baseUrl/sakes/$id").body()
     }
+
+    /**
+     * 酒にいいねを追加
+     *
+     * @param sakeId 酒のID
+     */
+    suspend fun likeSake(sakeId: Int) {
+        httpClient.post("$baseUrl/sakes/$sakeId/like")
+    }
+
+    /**
+     * 酒のいいねを削除
+     *
+     * @param sakeId 酒のID
+     */
+    suspend fun unlikeSake(sakeId: Int) {
+        httpClient.delete("$baseUrl/sakes/$sakeId/like")
+    }
 }

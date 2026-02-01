@@ -17,5 +17,7 @@ data class Sake(
     val drinkStyles: List<DrinkStyle>,
     val createdAt: Instant,
     val updatedAt: Instant,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val likeCount: Int = 0,
+    val isLikedByCurrentUser: Boolean = false
 )

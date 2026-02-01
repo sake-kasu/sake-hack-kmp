@@ -23,3 +23,7 @@ iosApp/.env
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 node_modules/
+
+# Firebase設定ファイル（機密情報を含むため）
+google-services.json
+GoogleService-Info.plist

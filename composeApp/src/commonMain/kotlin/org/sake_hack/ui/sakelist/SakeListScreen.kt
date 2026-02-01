@@ -127,6 +127,9 @@ private fun SakeListMainContent(
                     hasNextPage = uiState.hasNextPage(),
                     error = uiState.error,
                     onSakeClick = { onIntent(SakeListIntent.OpenSakeDetail(it)) },
+                    onLikeClick = { sakeId, isLiked ->
+                        onIntent(SakeListIntent.ToggleLike(sakeId, isLiked))
+                    },
                     onLoadMore = { onIntent(SakeListIntent.LoadNextPage) },
                     onRetry = { onIntent(SakeListIntent.LoadNextPage) }
                 )
@@ -177,6 +180,7 @@ private fun InfiniteScrollSakeList(
     hasNextPage: Boolean,
     error: AppError?,
     onSakeClick: (org.sake_hack.feature.sakelist.domain.model.Sake) -> Unit,
+    onLikeClick: (sakeId: Int, isCurrentlyLiked: Boolean) -> Unit,
     onLoadMore: () -> Unit,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
@@ -212,7 +216,8 @@ private fun InfiniteScrollSakeList(
         items(sakeList, key = { it.id }) { sake ->
             SakeListItem(
                 sake = sake,
-                onClick = { onSakeClick(sake) }
+                onClick = { onSakeClick(sake) },
+                onLikeClick = onLikeClick
             )
         }
 
