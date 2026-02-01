@@ -1,7 +1,7 @@
 package org.sake_hack.ui.drawer
 
+import org.sake_hack.core.common.domain.model.UserRole
 import org.sake_hack.domain.model.NavigationPermission
-import org.sake_hack.domain.model.UserRole
 import org.sake_hack.navigation.NavDestinations
 
 /**

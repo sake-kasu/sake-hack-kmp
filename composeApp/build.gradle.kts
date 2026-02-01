@@ -30,6 +30,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // Feature modules
+            implementation(projects.feature.auth)
             implementation(projects.feature.greeting)
             implementation(projects.feature.sakelist)
             implementation(projects.feature.stocklist)
@@ -52,6 +53,9 @@ kotlin {
 
             // Ktor (HttpClient型参照のため)
             implementation(libs.ktor.client.core)
+
+            // Firebase Auth
+            implementation(libs.firebase.auth)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

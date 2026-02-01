@@ -1,5 +1,7 @@
 package org.sake_hack.domain.model
 
+import org.sake_hack.core.common.domain.model.UserRole
+
 /**
  * ナビゲーション先の識別子
  */
@@ -41,7 +43,7 @@ data class NavigationPermission(
          * @return ロールに対応するNavigationPermission
          */
         fun forRole(role: UserRole): NavigationPermission = when (role) {
-            is UserRole.Admin -> NavigationPermission(
+            UserRole.Admin -> NavigationPermission(
                 allowedDestinations = setOf(
                     NavDestination.SakeList,
                     NavDestination.StockList,
@@ -49,20 +51,20 @@ data class NavigationPermission(
                 ),
                 userRole = role
             )
-            is UserRole.Manager -> NavigationPermission(
+            UserRole.Manager -> NavigationPermission(
                 allowedDestinations = setOf(
                     NavDestination.SakeList,
                     NavDestination.StockList
                 ),
                 userRole = role
             )
-            is UserRole.User -> NavigationPermission(
+            UserRole.User -> NavigationPermission(
                 allowedDestinations = setOf(
                     NavDestination.SakeList
                 ),
                 userRole = role
             )
-            is UserRole.Guest -> NavigationPermission(
+            UserRole.Guest -> NavigationPermission(
                 allowedDestinations = emptySet(),
                 userRole = role
             )
