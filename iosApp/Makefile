@@ -1,5 +1,9 @@
 # Sake Hack KMP - iOS Development Commands
 
+# .envファイルを読み込み
+include .env
+export
+
 # Simulator device: iPhone 17 Pro
 SIMULATOR_DEVICE_ID = 60958EAE-9046-4FDC-8F1E-D9059E25486A
 # Physical device: iPhone 15 Pro Max
@@ -26,7 +30,7 @@ help:
 
 xcodegen:
 	@echo "Generating Xcode project..."
-	xcodegen -s project.yml
+	TEAM_ID=$(TEAM_ID) xcodegen -s project.yml
 
 build:
 	@echo "Building iOS app for simulator..."
@@ -56,7 +60,7 @@ build-and-run:
 
 device-build:
 	@echo "Building iOS app for physical device..."
-	xcodebuild -project $(PROJECT) \
+	TEAM_ID=$(TEAM_ID) xcodebuild -project $(PROJECT) \
 	  -scheme $(SCHEME) \
 	  -destination 'platform=iOS,id=$(DEVICE_ID)' \
 	  -configuration Debug \
@@ -73,7 +77,7 @@ device-run:
 
 device-build-and-run:
 	@echo "Building, installing and running iOS app on physical device..."
-	xcodebuild -project $(PROJECT) \
+	TEAM_ID=$(TEAM_ID) xcodebuild -project $(PROJECT) \
 	  -scheme $(SCHEME) \
 	  -destination 'platform=iOS,id=$(DEVICE_ID)' \
 	  -configuration Debug \

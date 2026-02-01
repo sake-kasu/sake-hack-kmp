@@ -90,26 +90,34 @@ struct SakeListView: View {
 
     // MARK: - Sake List
 
-    /// 酒一覧
+    /// 酒一覧（2列グリッド）
     /// デザイン仕様: 背景色 $sumi-50 (#F8F8FB), padding [12,16,16,16], gap 12pt
     private var sakeList: some View {
         ScrollView {
-            LazyVStack(spacing: 12) {
-                ForEach(model.state.sakes) { sake in
-                    SakeRowView(sake: sake)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            model.openSakeDetail(sake)
-                        }
+            VStack(spacing: 0) {
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 12),
+                        GridItem(.flexible(), spacing: 12)
+                    ],
+                    spacing: 12
+                ) {
+                    ForEach(model.state.sakes) { sake in
+                        SakeRowView(sake: sake)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                model.openSakeDetail(sake)
+                            }
+                    }
                 }
+                .padding(.top, 12)
+                .padding(.horizontal, 16)
 
                 // ページネーション
                 if model.state.hasNextPage {
                     loadMoreRow
                 }
             }
-            .padding(.top, 12)
-            .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
@@ -244,13 +252,15 @@ struct SakeListView: View {
 
 /// 酒カード
 /// デザイン仕様: cornerRadius 12pt, padding 12pt, gap 12pt, shadow blur 8 offset(0,2)
+/// 画像アスペクト比: 3:4
 struct SakeRowView: View {
     let sake: Sake
+    @State private var isLiked = false
 
     var body: some View {
-        HStack(spacing: 12) {
-            // サムネイル - デザイン仕様: 64x64pt, cornerRadius 8pt
-            sakeImage
+        VStack(alignment: .leading, spacing: 12) {
+            // サムネイル - デザイン仕様: アスペクト比 3:4, cornerRadius 8pt
+            sakeImageWithLikeButton
 
             // 情報 - デザイン仕様: gap 6pt
             VStack(alignment: .leading, spacing: 6) {
@@ -286,31 +296,56 @@ struct SakeRowView: View {
                     }
                 }
             }
-
-            Spacer()
         }
+        .frame(maxWidth: .infinity)
         .padding(12)
         .background(Color(UIColor.systemBackground))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 
-    private var sakeImage: some View {
-        Group {
-            if let imageUrl = sake.imageUrl, let url = URL(string: imageUrl) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } placeholder: {
+    // 3:4アスペクト比の画像
+    private var imageWidth: CGFloat { 160 }
+    private var imageHeight: CGFloat { imageWidth * 4 / 3 }
+
+    private var sakeImageWithLikeButton: some View {
+        ZStack(alignment: .bottomTrailing) {
+            // 酒の画像
+            Group {
+                if let imageUrl = sake.imageUrl, let url = URL(string: imageUrl) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        placeholderImage
+                    }
+                } else {
                     placeholderImage
                 }
-            } else {
-                placeholderImage
             }
+            .frame(width: imageWidth, height: imageHeight)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+
+            // いいねボタン
+            Button {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                    isLiked.toggle()
+                }
+            } label: {
+                Image(systemName: isLiked ? "heart.fill" : "heart")
+                    .font(.system(size: 20))
+                    .foregroundStyle(isLiked ? .red : .white)
+                    .frame(width: 36, height: 36)
+                    .background(
+                        Circle()
+                            .fill(isLiked ? Color.white.opacity(0.9) : Color.black.opacity(0.5))
+                    )
+                    .shadow(radius: 2)
+            }
+            .padding(.trailing, 8)
+            .padding(.bottom, 8)
         }
-        .frame(width: 64, height: 64)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
     private var placeholderImage: some View {
@@ -319,6 +354,7 @@ struct SakeRowView: View {
             .overlay {
                 Image(systemName: "wineglass")
                     .foregroundStyle(.gray)
+                    .font(.system(size: 40))
             }
     }
 }
